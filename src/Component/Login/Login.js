@@ -12,30 +12,30 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    
+
+    const { register, formState: { errors }, handleSubmit } = useForm();
+    const handleLogin = async (data) => {
+        // console.log(data);
+        const mail = data.mail;
+        const password = data.password;
+        // console.log(data);
+        await signInWithEmailAndPassword(mail, password);
+    };
+
     if (user) {
         console.log(user);
     }
+    else {
+        console.log('USer not found');
+    }
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const handleLogin = (data) => {
-        console.log(data);
-        const name = data.name;
-        const mail = data.mail;
-        console.log(name, mail);
-        signInWithEmailAndPassword(name, mail);
-    };
+
     return (
         <div className="card  mt-20 mx-auto w-96 bg-base-100 shadow-xl">
             <div className="card-body">
                 <h2 className="card-title justify-center">Login</h2>
                 <form name='loginForm' onSubmit={handleSubmit(handleLogin)}>
-                    <input
-                        type="text"
-                        className='input input-bordered w-full max-w-xs mb-5' placeholder='Name'
-                        {...register("name", { required: true })}
-                        aria-invalid={errors.name ? "true" : "false"}
-                    />
-                    {errors.Name?.type === 'required' && <p role="alert">First name is required</p>}
 
                     <input
                         type="text"
@@ -45,7 +45,16 @@ const Login = () => {
                     />
                     {errors.mail && <p role="alert">{errors.mail?.message}</p>}
 
+                    <input
+                        type="text"
+                        className='input input-bordered w-full max-w-xs mt-5' placeholder='Password'
+                        {...register("password", { required: "Password is required" })}
+                        aria-invalid={errors.password ? "true" : "false"}
+                    />
+                    {errors.password && <p role="alert">{errors.password?.message}</p>}
+
                     <input type="submit" value="login" className="btn w-full mt-5" />
+
                 </form>
                 <div className="divider">OR</div>
 
