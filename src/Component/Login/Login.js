@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+
 
 
 const Login = () => {
+
+    //singin with email and password
     const [
         signInWithEmailAndPassword,
         user,
@@ -12,22 +16,26 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    
+    //signin with google
+    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
 
+
+    //react form
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const handleLogin = async (data) => {
-        // console.log(data);
+
+    //handle sign in
+    const handleLogin = (data) => {
         const mail = data.mail;
         const password = data.password;
-        // console.log(data);
-        await signInWithEmailAndPassword(mail, password);
+        signInWithEmailAndPassword(mail, password);
     };
 
-    if (user) {
-        console.log(user);
+    if (loading || gloading) {
+        return <p>Loading ....</p>
     }
-    else {
-        console.log('USer not found');
+
+    if (user || guser) {
+        console.log(user || guser);
     }
 
 
@@ -46,7 +54,7 @@ const Login = () => {
                     {errors.mail && <p role="alert">{errors.mail?.message}</p>}
 
                     <input
-                        type="text"
+                        type="password"
                         className='input input-bordered w-full max-w-xs mt-5' placeholder='Password'
                         {...register("password", { required: "Password is required" })}
                         aria-invalid={errors.password ? "true" : "false"}
@@ -58,7 +66,7 @@ const Login = () => {
                 </form>
                 <div className="divider">OR</div>
 
-                <input type="submit" value="Continune with Google" className="btn w-full mt-5" />
+                <input onClick={() => signInWithGoogle()} type="submit" value="Continune with Google" className="btn w-full mt-5" />
             </div>
         </div>
     );

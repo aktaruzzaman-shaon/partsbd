@@ -41,7 +41,7 @@ const SignUp = () => {
                     {errors.mail && <p role="alert">{errors.mail?.message}</p>}
 
                     <input
-                        type="text"
+                        type="password"
                         className='input input-bordered w-full max-w-xs mt-5' placeholder='Password'
                         {...register("password", { required: "Password is required" })}
                         aria-invalid={errors.mail ? "true" : "false"}
