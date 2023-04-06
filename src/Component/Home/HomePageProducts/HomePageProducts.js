@@ -27,7 +27,7 @@ const HomePageProducts = () => {
     }, [])
 
     return (
-        <div >
+        <div>
             <div><p>Products</p></div>
             <div className='mx-10 grid grid-cols-3 gap-3'>
                 {
@@ -37,7 +37,6 @@ const HomePageProducts = () => {
                     )
                 }
             </div>
-
 
             {/* pagination button */}
             <div className="btn-group">

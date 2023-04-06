@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const Navbar = () => {
+
     const [user] = useAuthState(auth);
     const [signOut, loading, error] = useSignOut(auth);
 
     const handleSingOut = () => {
         signOut();
     }
+
     return (
 
         // Navbar
@@ -21,7 +23,8 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="products">Products</Link></li>
-                    <li><Link to="myaccount">MyAccount</Link></li>
+                    <li><Link to="order">Orders</Link></li>
+                    <li><Link to="dashboard">Dashboard</Link></li>
                     <li><Link to="blog">Blog</Link></li>
                     <li><Link to="signup">SingUp</Link></li>
                     <li>
