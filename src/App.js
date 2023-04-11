@@ -8,6 +8,8 @@ import SignUp from './Component/SignUp/SignUp';
 import Dashboard from './Component/Dashborad/Dashboard';
 import Order from './Component/Order/Order';
 import RequireAuth from './Component/ProtectedRoute/RequireAuth';
+import Orders from './Component/Orders/Orders';
+import User from './Component/User/User';
 
 function App() {
 
@@ -21,7 +23,10 @@ function App() {
           <RequireAuth>
             <Dashboard></Dashboard>
           </RequireAuth>
-        }></Route>
+        }>
+          <Route index element={<Orders></Orders>}></Route>
+          <Route path='user' element={<User></User>}></Route>
+        </Route>
         <Route path='order' element={<Order></Order>}></Route>
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
