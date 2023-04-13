@@ -6,7 +6,7 @@ import Blog from './Component/Blog/Blog';
 import Login from './Component/Login/Login';
 import SignUp from './Component/SignUp/SignUp';
 import Dashboard from './Component/Dashborad/Dashboard';
-import Order from './Component/Order/Order';
+import Order from './Component/MakeOrder/Order';
 import RequireAuth from './Component/ProtectedRoute/RequireAuth';
 import Orders from './Component/Orders/Orders';
 import User from './Component/User/User';
