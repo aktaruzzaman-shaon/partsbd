@@ -10,11 +10,13 @@ import Order from './Component/MakeOrder/Order';
 import RequireAuth from './Component/ProtectedRoute/RequireAuth';
 import Orders from './Component/Orders/Orders';
 import User from './Component/User/User';
+import Navbar from './Component/Shared/Navbar/Navbar';
 
 function App() {
 
   return (
     <div className="App">
+      <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>

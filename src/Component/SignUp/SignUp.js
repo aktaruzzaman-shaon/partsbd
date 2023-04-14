@@ -2,11 +2,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import useToken from '../Hooks/useToken';
 
 
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+
+    //for create user with email and password
     const [
         createUserWithEmailAndPassword,
         user,
@@ -14,8 +17,11 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    const [token] = useToken(user);
+    console.log(user?.email);
+
+    //handle sing up
     const handleSignUp = (data) => {
-        console.log(data);
         createUserWithEmailAndPassword(data.mail, data.password, data.name);
     }
 
