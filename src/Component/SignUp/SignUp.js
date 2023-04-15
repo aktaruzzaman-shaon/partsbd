@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import useToken from '../Hooks/useToken';
+import { Navigate } from 'react-router-dom';
 
 
 
@@ -18,8 +19,10 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
 
     const [token] = useToken(user);
-    console.log(user?.email);
 
+    // if (token) {
+    //     Navigate('/home');
+    // }
     //handle sing up
     const handleSignUp = (data) => {
         createUserWithEmailAndPassword(data.mail, data.password, data.name);

@@ -19,7 +19,6 @@ const Login = () => {
     //signin with google
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
 
-
     //react form
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -37,7 +36,6 @@ const Login = () => {
     if (user || guser) {
         console.log(user || guser);
     }
-
 
     return (
         <div className="card  mt-20 mx-auto w-96 bg-base-100 shadow-xl">
