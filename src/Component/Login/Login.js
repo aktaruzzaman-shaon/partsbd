@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import useToken from '../Hooks/useToken';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -21,6 +23,11 @@ const Login = () => {
 
     //react form
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    //use usetoken 
+    const [token] = useToken(user || guser);
 
     //handle sign in
     const handleLogin = (data) => {
@@ -33,8 +40,9 @@ const Login = () => {
         return <p>Loading ....</p>
     }
 
-    if (user || guser) {
-        console.log(user || guser);
+    const from = location.state?.from?.pathname || '/';
+    if (token) {
+        navigate(from, { replace: true });
     }
 
     return (

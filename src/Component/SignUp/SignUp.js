@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import useToken from '../Hooks/useToken';
-import { Navigate } from 'react-router-dom';
+import { navigate, useNavigate } from 'react-router-dom';
 
 
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const navigate = useNavigate();
+    const [token] = useToken(user);
 
     //for create user with email and password
     const [
@@ -18,11 +20,11 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    const [token] = useToken(user);
+    
+    if (token) {
+        navigate('/home');
+    }
 
-    // if (token) {
-    //     Navigate('/home');
-    // }
     //handle sing up
     const handleSignUp = (data) => {
         createUserWithEmailAndPassword(data.mail, data.password, data.name);
