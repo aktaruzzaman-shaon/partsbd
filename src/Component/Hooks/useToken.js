@@ -24,6 +24,7 @@ const useToken = user => {
                 })
         }
     }, [user])
+    
     return [token];
 }
 

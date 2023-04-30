@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import OrderPage from '../OrderPage/OrderPage';
 
 const Product = ({ singleProduct }) => {
 
     const { name, price, _id } = singleProduct;
     const [user] = useAuthState(auth);
 
+    const [singleProductPreviewer, setSingleProductPreviewer] = useState(false);
+
+
 
     //place order 
     const data = { name: name, price: price, _id: _id, mail: user?.email };
     const postOrders = () => {
-        fetch('http://localhost:5000/order', {
-            method: "POST",
+        fetch(`http://localhost:5000/order/${_id}`, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -29,10 +33,14 @@ const Product = ({ singleProduct }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>Price: {price}</p>
                 <p>Id: {_id}</p>
-                <div className="card-actions justify-end">
-                    <button onClick={() => postOrders()} className="btn btn-primary">Buy Now</button>
-                </div>
+
+                <label htmlFor="edit" onClick={() => {
+                    setSingleProductPreviewer(!false);
+                }} className="btn btn-primary" >Buy now</label>
             </div>
+            {
+                singleProductPreviewer && <OrderPage></OrderPage>
+            }
         </div>
     );
 };

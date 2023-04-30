@@ -11,6 +11,8 @@ import RequireAuth from './Component/ProtectedRoute/RequireAuth';
 import Orders from './Component/Orders/Orders';
 import Users from './Component/Users/Users';
 import Navbar from './Component/Shared/Navbar/Navbar';
+import Footer from './Component/Footer/Footer';
+import OrderPage from './Component/OrderPage/OrderPage';
 
 function App() {
 
@@ -34,6 +36,7 @@ function App() {
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
