@@ -23,6 +23,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='products' element={<Products></Products>}></Route>
+
         <Route path='dashboard' element={
           <RequireAuth>
             <Dashboard></Dashboard>
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<Orders></Orders>}></Route>
           <Route path='users' element={<Users></Users>}></Route>
         </Route>
+
         <Route path='order' element={<Order></Order>}></Route>
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='login' element={<Login></Login>}></Route>

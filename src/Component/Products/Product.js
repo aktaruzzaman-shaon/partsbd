@@ -39,7 +39,7 @@ const Product = ({ singleProduct }) => {
                 }} className="btn btn-primary" >Buy now</label>
             </div>
             {
-                singleProductPreviewer && <OrderPage></OrderPage>
+                singleProductPreviewer && <OrderPage singleProduct={singleProduct}></OrderPage>
             }
         </div>
     );
