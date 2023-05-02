@@ -10,7 +10,7 @@ import { navigate, useNavigate } from 'react-router-dom';
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
-    const [token] = useToken(user);
+    
 
     //for create user with email and password
     const [
@@ -19,6 +19,8 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
+    const [token] = useToken(user);
 
     
     if (token) {
