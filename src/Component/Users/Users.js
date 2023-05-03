@@ -5,7 +5,7 @@ import User from './User';
 const Users = () => {
 
     //loading all user data
-    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user/').then(res => res.json()));
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user/').then(res => res.json()));
 
     if (isLoading) {
         return <p>Loading ....</p>
@@ -19,11 +19,13 @@ const Users = () => {
                         <th></th>
                         <th>Email</th>
                         <th>Id</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        users.map((user, index) => <User user={user} index={index}></User>)
+                        users.map((user, index) => <User user={user} index={index} refetch={refetch}></User>)
                     }
                 </tbody>
             </table>
