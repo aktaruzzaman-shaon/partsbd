@@ -13,6 +13,7 @@ import Users from './Component/Users/Users';
 import Navbar from './Component/Shared/Navbar/Navbar';
 import Footer from './Component/Footer/Footer';
 import OrderPage from './Component/OrderPage/OrderPage';
+import RequireAdmin from './Component/ProtectedRoute/RequireAdmin';
 
 function App() {
 
@@ -30,7 +31,10 @@ function App() {
           </RequireAuth>
         }>
           <Route index element={<Orders></Orders>}></Route>
-          <Route path='users' element={<Users></Users>}></Route>
+          <Route path='users' element={<RequireAdmin>
+            <Users></Users>
+          </RequireAdmin>}>
+          </Route>
         </Route>
 
         <Route path='order' element={<Order></Order>}></Route>
