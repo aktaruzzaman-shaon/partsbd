@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const OrderPage = ({ singleProduct }) => {
 
     const { name, price, _id } = singleProduct;
+    const [productQuantity, setproductQuantity] = useState(0);
+
+    const decreaeProductQuantity = () => {
+        console.log("Decrese");
+        setproductQuantity(productQuantity - 1);
+        console.log(productQuantity)
+    }
+    const increseProductQuantity = () => {
+        console.log("Increase");
+        setproductQuantity(productQuantity + 1);
+        console.log(productQuantity);
+    }
+
 
     return (
         <div>
@@ -10,7 +23,7 @@ const OrderPage = ({ singleProduct }) => {
             <div className="modal">
                 <div className="modal-box w-11/12 max-w-5xl">
                     <label htmlFor="edit" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    
+
                     <div className="flex justify-center">
                         <div className='p-5 mr-5'>
                             <div className="card w-50 bg-base-100 shadow-xl">
@@ -19,11 +32,18 @@ const OrderPage = ({ singleProduct }) => {
                                     <p>Price: {price}</p>
                                     <p>Id: {_id}</p>
                                 </div>
+                                <div>
+                                    <button onClick={decreaeProductQuantity} className='btn btn-xs mr-5'>-</button>
+                                    {productQuantity}
+                                    <button onClick={increseProductQuantity} className='btn btn-xs ml-5'> +</button>
+                                </div>
                             </div>
+
                         </div>
 
                         <div className='ml-5'>
-                            <form>
+                            {/* Delivery inforamtio form */}
+                            {/* <form>
                                 <p className='font-extrabold'>Delivery Information</p>
                                 <div className='flex flex-col'>
                                     <input type="text" placeholder="Name" className="input mb-2 input-bordered w-full max-w-xs" />
@@ -31,7 +51,9 @@ const OrderPage = ({ singleProduct }) => {
                                     <input type="text" placeholder="Phone Number" className="input mb-2 input-bordered w-full max-w-xs" />
                                     <button className="btn">Payment</button>
                                 </div>
-                            </form>
+                            </form> */}
+
+
                         </div>
                     </div>
                 </div>
