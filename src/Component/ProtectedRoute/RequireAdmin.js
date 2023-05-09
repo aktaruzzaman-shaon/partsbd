@@ -9,7 +9,7 @@ const RequireAdmin = ({ children }) => {
     const [admin, setAdminLoading] = useAdmin(user);
     const location = useLocation();
     console.log(admin);
-    if(loading || setAdminLoading){
+    if (loading || setAdminLoading) {
         return <p>Loading ...</p>
     }
 

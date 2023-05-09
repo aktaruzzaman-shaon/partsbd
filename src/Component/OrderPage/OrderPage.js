@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
+import AmountCalculation from './AmountCalculation';
+import { useNavigate } from 'react-router-dom';
 
 const OrderPage = ({ singleProduct }) => {
 
     const { name, price, _id } = singleProduct;
-    const [productQuantity, setproductQuantity] = useState(0);
+    const [productQuantity, setproductQuantity] = useState(1);
+    const [amount] = AmountCalculation(productQuantity, price);
+    const navigate = useNavigate();
 
     const decreaeProductQuantity = () => {
-        console.log("Decrese");
         setproductQuantity(productQuantity - 1);
-        console.log(productQuantity)
     }
+
     const increseProductQuantity = () => {
-        console.log("Increase");
         setproductQuantity(productQuantity + 1);
-        console.log(productQuantity);
+    }
+
+    const paymentPageHandler = () => {
+        navigate('/payment');
     }
 
 
@@ -32,13 +37,15 @@ const OrderPage = ({ singleProduct }) => {
                                     <p>Price: {price}</p>
                                     <p>Id: {_id}</p>
                                 </div>
-                                <div>
-                                    <button onClick={decreaeProductQuantity} className='btn btn-xs mr-5'>-</button>
-                                    {productQuantity}
-                                    <button onClick={increseProductQuantity} className='btn btn-xs ml-5'> +</button>
+                                <div className='flex justify-center'>
+                                    <div className='mr-5'><p>Quantity : </p></div>
+                                    <div>
+                                        <button onClick={decreaeProductQuantity} className='btn btn-xs mr-5'>-</button>
+                                        {productQuantity}
+                                        <button onClick={increseProductQuantity} className='btn btn-xs ml-5'> +</button>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
 
                         <div className='ml-5'>
@@ -52,14 +59,17 @@ const OrderPage = ({ singleProduct }) => {
                                     <button className="btn">Payment</button>
                                 </div>
                             </form> */}
-
-
+                            <div className="card mt-5 w-50 bg-base-100 shadow-xl">
+                                <div className="card-body">
+                                    <h2 className="card-title">Amount : {amount}</h2>
+                                    <button className='btn' onClick={paymentPageHandler}>Payment</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div >
     );
 };
 

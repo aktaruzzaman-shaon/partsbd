@@ -14,6 +14,8 @@ import Navbar from './Component/Shared/Navbar/Navbar';
 import Footer from './Component/Footer/Footer';
 import OrderPage from './Component/OrderPage/OrderPage';
 import RequireAdmin from './Component/ProtectedRoute/RequireAdmin';
+import PaymentPage from './Component/PaymentPage/PaymentPage';
+import AddProducts from './Component/AddProducts/AddProducts';
 
 function App() {
 
@@ -24,23 +26,31 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='products' element={<Products></Products>}></Route>
-
         <Route path='dashboard' element={
           <RequireAuth>
             <Dashboard></Dashboard>
           </RequireAuth>
         }>
-          <Route index element={<Orders></Orders>}></Route>
-          <Route path='users' element={<RequireAdmin>
-            <Users></Users>
-          </RequireAdmin>}>
+          {/* nested route start*/}
+        <Route index element={<Orders></Orders>}></Route>
+          <Route path='users' element={
+            <RequireAdmin>
+              <Users></Users>
+            </RequireAdmin>}>
+          </Route>
+          <Route path='addProducts' element={
+            <RequireAdmin>
+              <AddProducts></AddProducts>
+            </RequireAdmin>}>
           </Route>
         </Route>
+        {/* Nested route end */}
 
         <Route path='order' element={<Order></Order>}></Route>
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>
+        <Route path='payment' element={<PaymentPage></PaymentPage>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
