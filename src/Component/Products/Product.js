@@ -3,13 +3,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import OrderPage from '../OrderPage/OrderPage';
 
-const Product = ({ singleProduct }) => {
+const Product = ({ singleProduct, adminUser }) => {
 
     const { name, price, _id } = singleProduct;
     const [user] = useAuthState(auth);
 
     const [singleProductPreviewer, setSingleProductPreviewer] = useState(false);
-
 
 
     //place order 
@@ -24,7 +23,7 @@ const Product = ({ singleProduct }) => {
         })
             .then(res => res.json())
             .then(data => console.log(data))
-
+            
     }
 
     return (
@@ -34,9 +33,12 @@ const Product = ({ singleProduct }) => {
                 <p>Price: {price}</p>
                 <p>Id: {_id}</p>
 
-                <label htmlFor="edit" onClick={() => {
+                {adminUser === true ? (<button className='btn'>Delete</button>) : <label htmlFor="edit" onClick={() => {
                     setSingleProductPreviewer(!false);
-                }} className="btn btn-primary" >Buy now</label>
+                }} className="btn btn-primary" >Buy now</label>}
+                {
+                    adminUser === true && <button className='btn'>EDIT</button>
+                }
             </div>
             {
                 singleProductPreviewer && <OrderPage singleProduct={singleProduct}></OrderPage>

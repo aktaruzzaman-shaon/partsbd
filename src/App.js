@@ -16,6 +16,7 @@ import OrderPage from './Component/OrderPage/OrderPage';
 import RequireAdmin from './Component/ProtectedRoute/RequireAdmin';
 import PaymentPage from './Component/PaymentPage/PaymentPage';
 import AddProducts from './Component/AddProducts/AddProducts';
+import RemoveProducts from './Component/RemoveProducts/RemoveProducts';
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
           </RequireAuth>
         }>
           {/* nested route start*/}
-        <Route index element={<Orders></Orders>}></Route>
+          <Route index element={<Orders></Orders>}></Route>
           <Route path='users' element={
             <RequireAdmin>
               <Users></Users>
@@ -41,6 +42,11 @@ function App() {
           <Route path='addProducts' element={
             <RequireAdmin>
               <AddProducts></AddProducts>
+            </RequireAdmin>}>
+          </Route>
+          <Route path='removeProducts' element={
+            <RequireAdmin>
+              <RemoveProducts></RemoveProducts>
             </RequireAdmin>}>
           </Route>
         </Route>

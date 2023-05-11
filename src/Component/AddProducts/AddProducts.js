@@ -25,7 +25,7 @@ const AddProducts = () => {
                         img: uploadedImageUrl
                     }
 
-                    fetch('http://localhost:5000/parts', {
+                    fetch('http://localhost:5000/addParts', {
                         method: 'POST',
                         headers: {
                             'content-type': "application/json",
