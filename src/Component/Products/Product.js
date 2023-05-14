@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import OrderPage from '../OrderPage/OrderPage';
+import { useQuery } from 'react-query';
 
 const Product = ({ singleProduct, adminUser }) => {
 
@@ -23,8 +24,23 @@ const Product = ({ singleProduct, adminUser }) => {
         })
             .then(res => res.json())
             .then(data => console.log(data))
-            
+
     }
+
+    // handle prodcut remove
+    const handleProductRemove = () => {
+        fetch(`http://localhost:5000/deleteProducts/${_id}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
+
 
     return (
         <div className="card w-50 bg-base-100 shadow-xl">
@@ -33,7 +49,7 @@ const Product = ({ singleProduct, adminUser }) => {
                 <p>Price: {price}</p>
                 <p>Id: {_id}</p>
 
-                {adminUser === true ? (<button className='btn'>Delete</button>) : <label htmlFor="edit" onClick={() => {
+                {adminUser === true ? (<button onClick={handleProductRemove} className='btn'>Remove</button>) : <label htmlFor="edit" onClick={() => {
                     setSingleProductPreviewer(!false);
                 }} className="btn btn-primary" >Buy now</label>}
                 {
