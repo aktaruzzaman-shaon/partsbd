@@ -16,7 +16,8 @@ import OrderPage from './Component/OrderPage/OrderPage';
 import RequireAdmin from './Component/ProtectedRoute/RequireAdmin';
 import PaymentPage from './Component/PaymentPage/PaymentPage';
 import AddProducts from './Component/AddProducts/AddProducts';
-import RemoveProducts from './Component/RemoveProducts/RemoveProducts';
+import ManageProducts from './Component/ManageProducts/ManageProducts';
+import DeliveryInfo from './Component/DeliveryInfoPage/DeliveryInfo';
 
 function App() {
 
@@ -44,10 +45,14 @@ function App() {
               <AddProducts></AddProducts>
             </RequireAdmin>}>
           </Route>
-          <Route path='removeProducts' element={
+          <Route path='manageProducts' element={
             <RequireAdmin>
-              <RemoveProducts></RemoveProducts>
+              <ManageProducts></ManageProducts>
             </RequireAdmin>}>
+          </Route>
+          <Route path='deliveryInfo' element={
+            <DeliveryInfo></DeliveryInfo>
+          }>
           </Route>
         </Route>
         {/* Nested route end */}

@@ -3,18 +3,21 @@ import Product from './Product';
 import OrderPage from '../OrderPage/OrderPage';
 import { Link } from 'react-router-dom';
 import Login from '../Login/Login';
+import { useQuery } from 'react-query';
 
 const Products = () => {
-    
+
     const [allProducts, setallProducts] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/allProducts')
-            .then(response => response.json())
-            .then(data => setallProducts(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/allProducts')
+    //         .then(response => response.json())
+    //         .then(data => setallProducts(data))
+    // }, [])
 
+    const { data, isLoading,refetch } = useQuery('allproducts', () => fetch('http://localhost:5000/allProducts').then(response => response.json()).then(data => setallProducts(data)))
 
+    console.log(allProducts);
     return (
         <div>
             <h2>Products</h2>
@@ -23,10 +26,7 @@ const Products = () => {
                     {
                         allProducts.map(singleProduct => <Product
                             singleProduct={singleProduct}
-                            // setSingleProductPreviewer={setSingleProductPreviewer}
-                            // singleProductPreviewer={
-                            //     singleProductPreviewer
-                            // }
+                            refetch={refetch}
                         ></Product>
                         )
                     }

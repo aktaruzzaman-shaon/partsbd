@@ -41,6 +41,7 @@ const Orders = () => {
                         <th>Name</th>
                         <th>Pirce</th>
                         <th>Id</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
