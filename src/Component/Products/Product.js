@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import OrderPage from '../OrderPage/OrderPage';
 import { useQuery } from 'react-query';
+import PaymentPage from '../PaymentPage/PaymentPage';
 
 const Product = ({ singleProduct, adminUser, refetch }) => {
 
@@ -36,10 +37,14 @@ const Product = ({ singleProduct, adminUser, refetch }) => {
                 <p>Id: {_id}</p>
                 <label htmlFor="edit" onClick={() => {
                     setSingleProductPreviewer(!false);
-                }} className="btn btn-primary" >Buy now</label>
+                }} className="btn btn-primary" >Details</label>
+                <button onClick={() => setSingleProductPreviewer(!false)} className='btn'>Buy Now</button>
             </div>
             {
                 singleProductPreviewer && <OrderPage singleProduct={singleProduct}></OrderPage>
+            }
+            {
+                singleProductPreviewer && <PaymentPage singleProduct={singleProduct}></PaymentPage>
             }
         </div>
     );
