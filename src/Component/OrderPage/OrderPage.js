@@ -10,7 +10,10 @@ const OrderPage = ({ singleProduct }) => {
     const navigate = useNavigate();
 
     const decreaeProductQuantity = () => {
-        setproductQuantity(productQuantity - 1);
+        if (productQuantity > 1) {
+            setproductQuantity(productQuantity - 1);
+        }
+
     }
 
     const increseProductQuantity = () => {
@@ -49,16 +52,6 @@ const OrderPage = ({ singleProduct }) => {
                         </div>
 
                         <div className='ml-5'>
-                            {/* Delivery inforamtio form */}
-                            {/* <form>
-                                <p className='font-extrabold'>Delivery Information</p>
-                                <div className='flex flex-col'>
-                                    <input type="text" placeholder="Name" className="input mb-2 input-bordered w-full max-w-xs" />
-                                    <input type="text" placeholder="Address" className="input mb-2 input-bordered w-full max-w-xs" />
-                                    <input type="text" placeholder="Phone Number" className="input mb-2 input-bordered w-full max-w-xs" />
-                                    <button className="btn">Payment</button>
-                                </div>
-                            </form> */}
                             <div className="card mt-5 w-50 bg-base-100 shadow-xl">
                                 <div className="card-body">
                                     <h2 className="card-title">Amount : {amount}</h2>

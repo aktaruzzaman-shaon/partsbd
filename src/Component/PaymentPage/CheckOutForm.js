@@ -1,17 +1,28 @@
-import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useState } from 'react';
 
 const CheckOutForm = () => {
 
     const stripe = useStripe();
     const elements = useElements();
-    const [errorMessage, setErrorMessage] = useState(null);
+    const [cardError, setCardError] = useState(" ");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!stripe || !elements) {
-            return
+            return;
         }
+
+        const card = elements.getElement(CardElement);
+        if (card == null) {
+            return;
+        }
+
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: "card",
+            card
+        });
+        setCardError(error?.message || '')
     }
 
     return (
@@ -21,13 +32,29 @@ const CheckOutForm = () => {
             <div className=" card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <form onSubmit={handleSubmit}>
-                        <PaymentElement />
-                        <button type="submit" disabled={!stripe || !elements}>
+                        <CardElement
+                            options={{
+                                style: {
+                                    base: {
+                                        fontSize: '16px',
+                                        color: '#424770',
+                                        '::placeholder': {
+                                            color: '#aab7c4',
+                                        },
+                                    },
+                                    invalid: {
+                                        color: '#9e2146',
+                                    },
+                                },
+                            }}
+                        />
+                        <button className='btn btn-success mt-5' type="submit" disabled={!stripe}>
                             Pay
                         </button>
-                        {/* Show error message to your customers */}
-                        {errorMessage && <div>{errorMessage}</div>}
                     </form>
+                    {
+                        cardError && <p>{cardError}</p>
+                    }
                 </div>
             </div>
         </div>
