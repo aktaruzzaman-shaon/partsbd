@@ -18,6 +18,9 @@ import PaymentPage from './Component/PaymentPage/PaymentPage';
 import AddProducts from './Component/AddProducts/AddProducts';
 import ManageProducts from './Component/ManageProducts/ManageProducts';
 import DeliveryInfo from './Component/DeliveryInfoPage/DeliveryInfo';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
 
 function App() {
 
