@@ -1,11 +1,32 @@
 import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useFetcher } from 'react-router-dom';
 
-const CheckOutForm = () => {
+const CheckOutForm = ({ price }) => {
 
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState(" ");
+    const [clientSecret, setClientSecret] = useState('')
+
+    useEffect(() => {
+        fetch('http://localhost:5000/createPaymentIntent', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                
+            },
+            body: JSON.stringify({
+                price: price})
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.clientSecret) {
+                    setClientSecret(data.clientSecret)
+                }
+                console.log(data)
+            })
+    }, [price])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -48,7 +69,7 @@ const CheckOutForm = () => {
                                 },
                             }}
                         />
-                        <button className='btn btn-success mt-5' type="submit" disabled={!stripe}>
+                        <button className='btn btn-success mt-5' type="submit" disabled={!stripe || !clientSecret}>
                             Pay
                         </button>
                     </form>

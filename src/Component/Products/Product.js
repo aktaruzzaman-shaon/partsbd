@@ -4,14 +4,21 @@ import auth from '../../firebase.init';
 import OrderPage from '../OrderPage/OrderPage';
 import { useQuery } from 'react-query';
 import PaymentPage from '../PaymentPage/PaymentPage';
+import { useNavigate } from 'react-router-dom';
 
 const Product = ({ singleProduct, adminUser, refetch }) => {
 
     const { name, price, _id, img } = singleProduct;
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     const [singleProductPreviewer, setSingleProductPreviewer] = useState(false);
+    const [paymentPreviewer, setPaymentPreviewer] = useState(false);
 
+    const handlePaymentPageForward = () => {
+        navigate('/payment', { state: { singleProduct } })
+        console.log("from handle payment previewer")
+    }
 
     //place order 
     const data = { name: name, price: price, _id: _id, mail: user?.email };
@@ -38,14 +45,14 @@ const Product = ({ singleProduct, adminUser, refetch }) => {
                 <label htmlFor="edit" onClick={() => {
                     setSingleProductPreviewer(!false);
                 }} className="btn btn-primary" >Details</label>
-                <button onClick={() => setSingleProductPreviewer(!false)} className='btn'>Buy Now</button>
+                <button onClick={handlePaymentPageForward} className='btn'>Buy Now</button>
             </div>
             {
                 singleProductPreviewer && <OrderPage singleProduct={singleProduct}></OrderPage>
             }
-            {
-                singleProductPreviewer && <PaymentPage singleProduct={singleProduct}></PaymentPage>
-            }
+            {/* {
+                paymentPreviewer && <PaymentPage singleProduct={singleProduct}></PaymentPage>
+            } */}
         </div>
     );
 };

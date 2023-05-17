@@ -40,23 +40,6 @@ const OrderPage = ({ singleProduct }) => {
                                     <p>Price: {price}</p>
                                     <p>Id: {_id}</p>
                                 </div>
-                                <div className='flex justify-center'>
-                                    <div className='mr-5'><p>Quantity : </p></div>
-                                    <div>
-                                        <button onClick={decreaeProductQuantity} className='btn btn-xs mr-5'>-</button>
-                                        {productQuantity}
-                                        <button onClick={increseProductQuantity} className='btn btn-xs ml-5'> +</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='ml-5'>
-                            <div className="card mt-5 w-50 bg-base-100 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">Amount : {amount}</h2>
-                                    <button className='btn' onClick={paymentPageHandler}>Payment</button>
-                                </div>
                             </div>
                         </div>
                     </div>
