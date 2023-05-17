@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import HomePageProduct from './HomePageProduct';
+import Product from '../../Products/Product';
 
 const HomePageProducts = () => {
 
@@ -31,9 +32,7 @@ const HomePageProducts = () => {
             <div><p>Products</p></div>
             <div className='mx-10 grid grid-cols-3 gap-3'>
                 {
-                    homePageProducts.map(homePageProduct => <HomePageProduct
-                        homePageProduct={homePageProduct}
-                    ></HomePageProduct>
+                    homePageProducts.map(singleProduct => <Product singleProduct={singleProduct}></Product>
                     )
                 }
             </div>

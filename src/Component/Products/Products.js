@@ -15,12 +15,17 @@ const Products = () => {
     //         .then(data => setallProducts(data))
     // }, [])
 
-    const { data, isLoading,refetch } = useQuery('allproducts', () => fetch('http://localhost:5000/allProducts').then(response => response.json()).then(data => setallProducts(data)))
+    const { data, isLoading, refetch } = useQuery('allproducts', () => fetch('http://localhost:5000/allProducts').then(response => response.json()).then(data => setallProducts(data)))
+
+    
 
     console.log(allProducts);
     return (
         <div>
             <h2>Products</h2>
+            <div>
+                <input type="text" placeholder="search by name" className="input input-bordered w-full max-w-lg mb-5" />
+            </div>
             <div >
                 <div className='mx-10 grid grid-cols-3 gap-3'>
                     {
