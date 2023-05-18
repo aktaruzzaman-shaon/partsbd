@@ -9,15 +9,13 @@ const Products = () => {
 
     const [allProducts, setallProducts] = useState([]);
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/allProducts')
-    //         .then(response => response.json())
-    //         .then(data => setallProducts(data))
-    // }, [])
 
+    //for loading all data
     const { data, isLoading, refetch } = useQuery('allproducts', () => fetch('http://localhost:5000/allProducts').then(response => response.json()).then(data => setallProducts(data)))
 
-    
+    //for loading searching single data
+    const { data: searchProducts, isLoading: searchLoading } = useQuery('allproducts', () => fetch(`http://localhost:5000/allProducts/${name}`).then(response => response.json()).then(data => setallProducts(data)))
+
 
     console.log(allProducts);
     return (
@@ -37,9 +35,7 @@ const Products = () => {
                     }
                 </div>
             </div>
-
         </div>
-
     );
 };
 
