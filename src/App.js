@@ -20,6 +20,7 @@ import ManageProducts from './Component/ManageProducts/ManageProducts';
 import DeliveryInfo from './Component/DeliveryInfoPage/DeliveryInfo';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import AddBrand from './Component/Dashborad/AddBrand/AddBrand';
 
 
 function App() {
@@ -55,6 +56,10 @@ function App() {
           </Route>
           <Route path='deliveryInfo' element={
             <DeliveryInfo></DeliveryInfo>
+          }>
+          </Route>
+          <Route path='addBrand' element={
+            <AddBrand></AddBrand>
           }>
           </Route>
         </Route>
