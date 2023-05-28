@@ -1,25 +1,20 @@
 import React from 'react';
 import banner1 from '../../../assets/banner/banner1.jpg'
 import banner2 from '../../../assets/banner/banner2.jpg'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel } from 'swiper';
 
 const Banner = () => {
     return (
-        <div className="carousel mx-7 h-screen	my-5 rounded">
-            <div id="slide1" className="carousel-item relative w-full">
-                <img src={banner1} className=" 	" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle">❮</a>
-                    <a href="#slide2" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide2" className="carousel-item relative w-full">
-                <img src={banner2} className=" 	" />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" className="btn btn-circle">❮</a>
-                    <a href="#slide3" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-        </div>
+        <Swiper
+            modules={[Mousewheel]}
+            spaceBetween={50}
+            slidesPerView={1}
+            mousewheel={true}
+        >
+            <SwiperSlide><img src={banner1} alt="" /></SwiperSlide>
+            <SwiperSlide><img src={banner2} alt="" /></SwiperSlide>
+        </Swiper>
     );
 };
 

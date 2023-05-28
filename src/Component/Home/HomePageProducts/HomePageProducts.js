@@ -1,60 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import HomePageProduct from './HomePageProduct';
 import Product from '../../Products/Product';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Mousewheel } from 'swiper';
+
+import 'swiper/css/bundle';
+import { useNavigate } from 'react-router-dom';
 
 const HomePageProducts = () => {
 
     const [homePageProducts, sethomePageProducts] = useState([]);
-    const [pageCount, setPageCount] = useState(0);
-    const [page, setPage] = useState(0);
-    const [size, setSize] = useState(6);
+    const navigate = useNavigate();
 
     //loading products by the value of size and page
     useEffect(() => {
-        fetch(`http://localhost:5000/homePageProducts?page=${page}&size=${size}`)
+        fetch(`http://localhost:5000/homePageProducts`)
             .then(response => response.json())
             .then(data => sethomePageProducts(data));
-    }, [page, size])
-
-    //loading sample data on home page
-    useEffect(() => {
-        fetch('http://localhost:5000/productCount')
-            .then(response => response.json())
-            .then(data => {
-                const count = data.count;
-                const pages = Math.ceil(count / 6);
-                setPageCount(pages);
-            });
     }, [])
+
+    //handle see all button
+    const handleSeeAllProducts = () => {
+        navigate('/products')
+    }
 
     return (
         <div>
-            <div><p>Products</p></div>
-            <div className='mx-10 grid grid-cols-3 gap-3'>
-                {
-                    homePageProducts.map(singleProduct => <Product singleProduct={singleProduct}></Product>
-                    )
-                }
-            </div>
-
-            {/* pagination button */}
-            <div className="btn-group">
-                {
-                    [...Array(pageCount).keys()].map(number => <button
-                        className={page === number ? 'btn-active' : ''}
-                        onClick={() => setPage(number)}
-                    >{number + 1}</button>)
-                }
-
-                <select onChange={e => setSize(e.target.value)}>
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                </select>
+            <div className='mx-10'>
+                <Swiper
+                    navigation={true} modules={[Navigation, Mousewheel]}
+                    spaceBetween={50}
+                    slidesPerView={3}
+                    mousewheel={true}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                >
+                    {
+                        homePageProducts.map((singleProduct) => <SwiperSlide><Product singleProduct={singleProduct}></Product></SwiperSlide>)
+                    }
+                </Swiper>
             </div>
 
             {/* See all product */}
-            <div className='my-3'><p>See all ...</p></div>
+            <div className='my-3'><button className='btn' onClick={handleSeeAllProducts}>See all ...</button></div>
         </div>
     );
 };

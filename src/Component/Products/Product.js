@@ -11,7 +11,7 @@ const Product = ({ singleProduct, adminUser, refetch }) => {
     const { name, price, _id, img } = singleProduct;
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-
+                                                                                                                              
     const [singleProductPreviewer, setSingleProductPreviewer] = useState(false);
     const [paymentPreviewer, setPaymentPreviewer] = useState(false);
 
