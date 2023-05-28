@@ -14,7 +14,6 @@ const Products = () => {
         fetch('http://localhost:5000/allProducts').then(response => response.json()).then(data => setallProducts(data))
     }, [searchProductName])
 
-
     return (
         <div>
             <h2>Products</h2>

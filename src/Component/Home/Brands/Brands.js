@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Brand from './Brand';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.min.css';
-import { A11y, Navigation, Pagination, Scrollbar } from 'swiper';
+import { Navigation, Mousewheel } from 'swiper';
+
+import 'swiper/css/bundle';
 
 const Brands = () => {
 
-    // Import Swiper styles
     const [brandImageUrls, setBrandImageUrls] = useState([]);
 
     fetch('http://localhost:5000/partsBrand')
@@ -15,25 +14,19 @@ const Brands = () => {
         .then(data => setBrandImageUrls(data))
 
     return (
-        <div className='mx-10 grid grid-cols-4 gap-3 m-5'>
-            <p>THis </p>
+        <div className='mx-10 m-5'>
             <Swiper
+                navigation={true} modules={[Navigation,Mousewheel]}
                 spaceBetween={50}
                 slidesPerView={3}
+                mousewheel={true}
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}
             >
-                <SwiperSlide><p>Slide 1</p></SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                ...
+                {
+                    brandImageUrls.map((brandImageUrl) => <SwiperSlide><Brand brandImageUrl={brandImageUrl}></Brand></SwiperSlide>)
+                }
             </Swiper>
-            {/* {
-                brandImageUrls.map(brandImageUrl => <Brand brandImageUrl={brandImageUrl}></Brand>)
-            } */}
-
-
         </div>
     );
 };
