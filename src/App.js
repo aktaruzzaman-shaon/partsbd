@@ -12,7 +12,6 @@ import Orders from './Component/Orders/Orders';
 import Users from './Component/Users/Users';
 import Navbar from './Component/Shared/Navbar/Navbar';
 import Footer from './Component/Footer/Footer';
-import OrderPage from './Component/OrderPage/OrderPage';
 import RequireAdmin from './Component/ProtectedRoute/RequireAdmin';
 import PaymentPage from './Component/PaymentPage/PaymentPage';
 import AddProducts from './Component/AddProducts/AddProducts';
@@ -21,6 +20,7 @@ import DeliveryInfo from './Component/DeliveryInfoPage/DeliveryInfo';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import AddBrand from './Component/Dashborad/AddBrand/AddBrand';
+import SingleProductDetailsPage from './Component/Products/SingleProductDetailsPage';
 
 
 function App() {
@@ -70,6 +70,8 @@ function App() {
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>
         <Route path='payment' element={<PaymentPage></PaymentPage>}></Route>
+        <Route path='singleProductDetails' element={<SingleProductDetailsPage></SingleProductDetailsPage>}></Route>
+
       </Routes>
       <Footer></Footer>
     </div>

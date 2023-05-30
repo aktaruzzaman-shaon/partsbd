@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product';
-import OrderPage from '../OrderPage/OrderPage';
 import { Link } from 'react-router-dom';
 import Login from '../Login/Login';
 import { useQuery } from 'react-query';

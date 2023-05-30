@@ -1,7 +1,6 @@
 import React, { createContext, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import OrderPage from '../OrderPage/OrderPage';
 import { useNavigate } from 'react-router-dom';
 
 const Product = ({ singleProduct, adminUser, refetch }) => {
@@ -11,12 +10,14 @@ const Product = ({ singleProduct, adminUser, refetch }) => {
     const navigate = useNavigate();
     const productContext = createContext({ singleProduct });
 
-    const [singleProductPreviewer, setSingleProductPreviewer] = useState(false);
     const [paymentPreviewer, setPaymentPreviewer] = useState(false);
 
     const handlePaymentPageForward = () => {
         navigate('/payment', { state: { singleProduct } })
-        console.log("from handle payment previewer")
+    }
+
+    const handleSingleProductViewer = () => {
+        navigate('/singleProductDetails', { state: { singleProduct } })
     }
 
     //place order 
@@ -40,17 +41,9 @@ const Product = ({ singleProduct, adminUser, refetch }) => {
                 <div><img className='h-48 w-full object-contain' src={img}></img></div>
                 <h2 className="card-title">{name}</h2>
                 <p>Price: {price}</p>
-                <button className='btn btn-primary' onClick={() => {
-                    setSingleProductPreviewer(!false);
-                }}>Details</button>
+                <button className='btn btn-primary' onClick={handleSingleProductViewer}>Details</button>
                 <button onClick={handlePaymentPageForward} className='btn'>Buy Now</button>
             </div>
-            {
-                singleProductPreviewer && <OrderPage singleProduct={singleProduct}></OrderPage>
-            }
-            {/* {
-                paymentPreviewer && <PaymentPage singleProduct={singleProduct}></PaymentPage>
-            } */}
         </div>
     );
 };
