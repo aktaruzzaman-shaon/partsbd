@@ -16,12 +16,11 @@ const Brands = () => {
     return (
         <div className='mx-10 m-5'>
             <Swiper
-                navigation={true} modules={[Navigation,Mousewheel]}
+                modules={[Navigation]}
+                navigation={true}
                 spaceBetween={50}
                 slidesPerView={3}
                 mousewheel={true}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
             >
                 {
                     brandImageUrls.map((brandImageUrl) => <SwiperSlide><Brand brandImageUrl={brandImageUrl}></Brand></SwiperSlide>)

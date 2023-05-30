@@ -9,8 +9,10 @@ import { useNavigate } from 'react-router-dom';
 
 const HomePageProducts = () => {
 
+
     const [homePageProducts, sethomePageProducts] = useState([]);
     const navigate = useNavigate();
+
 
     //loading products by the value of size and page
     useEffect(() => {
@@ -19,30 +21,29 @@ const HomePageProducts = () => {
             .then(data => sethomePageProducts(data));
     }, [])
 
+
     //handle see all button
     const handleSeeAllProducts = () => {
         navigate('/products')
     }
 
+
     return (
         <div>
             <div className='mx-10'>
                 <Swiper
-                    navigation={true} modules={[Navigation, Mousewheel]}
+                    modules={[Navigation, Mousewheel]}
+                    navigation={true}
                     spaceBetween={50}
                     slidesPerView={3}
                     mousewheel={true}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
                 >
-                    {
-                        homePageProducts.map((singleProduct) => <SwiperSlide><Product singleProduct={singleProduct}></Product></SwiperSlide>)
-                    }
+                    {homePageProducts.map((singleProduct) => <SwiperSlide><Product singleProduct={singleProduct}></Product></SwiperSlide>)}
                 </Swiper>
             </div>
 
-            {/* See all product */}
             <div className='my-3'><button className='btn' onClick={handleSeeAllProducts}>See all ...</button></div>
+
         </div>
     );
 };
