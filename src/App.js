@@ -21,6 +21,10 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import AddBrand from './Component/Dashborad/AddBrand/AddBrand';
 import SingleProductDetailsPage from './Component/Products/SingleProductDetailsPage';
+import Categories from './Component/Home/Categories/Categories';
+import Banner from './Component/Home/Banner/Banner';
+import BykeParts from './Component/Home/Categories/Byke-Parts/BykeParts';
+import CarParts from './Component/Home/Categories/Car-Parts/CarParts';
 
 
 function App() {
@@ -32,12 +36,13 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='products' element={<Products></Products>}></Route>
+
         <Route path='dashboard' element={
           <RequireAuth>
             <Dashboard></Dashboard>
           </RequireAuth>
         }>
-          {/* nested route start*/}
+          {/* nested route start for dashboard*/}
           <Route index element={<Orders></Orders>}></Route>
           <Route path='users' element={
             <RequireAdmin>
