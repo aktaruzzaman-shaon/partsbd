@@ -8,12 +8,12 @@ const Banner = () => {
     return (
         <Swiper
             modules={[Mousewheel]}
-            spaceBetween={50}
             slidesPerView={1}
             mousewheel={true}
+            className='rounded-lg'
         >
-            <SwiperSlide><img src={banner1} alt="" /></SwiperSlide>
-            <SwiperSlide><img src={banner2} alt="" /></SwiperSlide>
+            <SwiperSlide><img src={banner1}  alt="" /></SwiperSlide>
+            <SwiperSlide><img src={banner2} alt=""  /></SwiperSlide>
         </Swiper>
     );
 };
