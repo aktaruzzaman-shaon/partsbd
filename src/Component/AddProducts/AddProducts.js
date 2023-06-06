@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddProducts = () => {
-    const { register, handleSubmit, formState: { errors } ,reset} = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const imageStorageKey = "1d685d0dc62621d6524a698642b092eb";
 
     const onSubmit = async data => {
@@ -22,6 +22,7 @@ const AddProducts = () => {
                         name: data.Name,
                         price: data.Price,
                         stock: data.Stock,
+                        category: data.Category,
                         img: uploadedImageUrl
                     }
 
@@ -52,7 +53,7 @@ const AddProducts = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input {...register("Name", { required: true })} className='input input-bordered' />
+                        <input type='text' {...register("Name", { required: true })} className='input input-bordered' />
                     </div>
 
                     <div className="form-control w-full">
@@ -61,18 +62,28 @@ const AddProducts = () => {
                         </label>
                         <input type='number' {...register("Price", { required: true })} className='input input-bordered' />
                     </div>
+
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Category</span>
+                        </label>
+                        <input type='text' {...register("Category", { required: true })} className='input input-bordered' />
+                    </div>
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Stock</span>
                         </label>
                         <input type='number' {...register("Stock", { required: true })} className='input input-bordered' />
                     </div>
+
                     <div className="form-control">
                         <label className='label'>
                             <span className='label-text'>Description</span>
                         </label>
                         <textarea {...register("Description", { required: true })} className='input input-bordered mb-5' rows={8} cols={40} ></textarea>
                     </div>
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Image</span>

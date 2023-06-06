@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product';
-import { Link } from 'react-router-dom';
-import Login from '../Login/Login';
-import { useQuery } from 'react-query';
 
 const Products = () => {
 
     const [allProducts, setallProducts] = useState([]);
     const [searchProductName, setsearchProductName] = useState("");
+    const [category, setCategory] = useState('');
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
 
     //loading products by the value of size and page
     useEffect(() => {
-        fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}`)
+        fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`)
             .then(response => response.json())
             .then(data => setallProducts(data));
-    }, [page, size])
+    }, [page, size, category])
 
     useEffect(() => {
         fetch('http://localhost:5000/productCount')
@@ -31,7 +29,6 @@ const Products = () => {
 
     return (
         <div>
-            <h2>Products</h2>
 
             {/* Searchbar */}
             <div>
@@ -40,8 +37,20 @@ const Products = () => {
                 </form>
             </div>
 
-            {/* Loadproducts */}
-            <div >
+            {/* Loadproducts  by category*/}
+            <div className='flex flex-row'>
+                <div className="navbar bg-base-100 basis-1/4 bg-slate-200 mr-3 justify-center h-3/4">
+                    <div className="flex-none">
+                        <ul className="menu menu-vertical p-5">
+                            <li onClick={() => setCategory("car_door")}><a>Car Parts</a></li>
+                            <li onClick={() => setCategory("car_tools")}><a>Tools And hardware</a></li>
+                            <li onClick={() => setCategory("car_seat")}><a>Hybrid car seat</a></li>
+                            <li onClick={() => setCategory("car_glass")}><a>Heavy veichele glass</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Pagination */}
                 <div className='mx-10 grid grid-cols-3 gap-3'>
                     {
                         allProducts.filter((item) => {
@@ -52,22 +61,26 @@ const Products = () => {
                         )
                     }
                 </div>
+
+
             </div>
 
             {/* //pagination */}
-            <div className="btn-group">
-                {
-                    [...Array(pageCount).keys()].map(number => <button
-                        className={page === number ? 'btn-active' : ''}
-                        onClick={() => setPage(number)}
-                    >{number + 1}</button>)
-                }
+            <div className='m-5'>
+                <div className="btn-group">
+                    {
+                        [...Array(pageCount).keys()].map(number => <button
+                            className={page === number ? 'btn-active' : ''}
+                            onClick={() => setPage(number)}
+                        >{number + 1}</button>)
+                    }
 
-                <select onChange={e => setSize(e.target.value)}>
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                </select>
+                    <select onChange={e => setSize(e.target.value)}>
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                </div>
             </div>
         </div >
     );

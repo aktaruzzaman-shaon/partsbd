@@ -21,10 +21,9 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import AddBrand from './Component/Dashborad/AddBrand/AddBrand';
 import SingleProductDetailsPage from './Component/Products/SingleProductDetailsPage';
-import Categories from './Component/Home/Categories/Categories';
-import Banner from './Component/Home/Banner/Banner';
-import BykeParts from './Component/Home/Categories/Byke-Parts/BykeParts';
-import CarParts from './Component/Home/Categories/Car-Parts/CarParts';
+
+
+
 
 
 function App() {
