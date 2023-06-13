@@ -10,7 +10,7 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
 
     const [productQuantity, setproductQuantity] = useState(1);
     const [amount] = AmountCalculation(productQuantity, price);
-    const finalAmountToPay = {finalPriceToPay : amount}
+    const finalAmountToPay = { finalPriceToPay: amount }
 
     const decreaeProductQuantity = () => {
         if (productQuantity > 1) {
@@ -38,7 +38,7 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
                     <p className='font-extrabold'>{name}</p>
                     <p className='font-extrabold'>{price}</p>
 
-                    <div className='flex justify-center'>
+                    <div className='flex justify-center mr-5'>
                         <div className='mr-5'><p>Quantity : </p></div>
                         <div>
                             <button onClick={decreaeProductQuantity} className='btn btn-xs mr-5'>-</button>
@@ -50,13 +50,16 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
                     <div>
                         <h2 className="card-title mt-5">Amount to pay : {amount}</h2>
                     </div>
+
+                    <div className=' mt-5'>
+                        <button className='btn mr-5'>Add to Cart</button>
+                        <button onClick={handlePaymentPageForward} className='btn'>Buy Now</button>
+                    </div>
                 </div>
-                <div>
-                    <button onClick={handlePaymentPageForward} className='btn'>Buy Now</button>
-                </div>
+
             </div>
             <div>
-                
+
             </div>
 
         </div>

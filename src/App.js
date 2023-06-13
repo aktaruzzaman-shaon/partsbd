@@ -21,6 +21,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import AddBrand from './Component/Dashborad/AddBrand/AddBrand';
 import SingleProductDetailsPage from './Component/Products/SingleProductDetailsPage';
+import Cart from './Component/Cart/Cart';
 
 
 
@@ -70,6 +71,10 @@ function App() {
         {/* Nested route end */}
 
         <Route path='order' element={<Order></Order>}></Route>
+        <Route path='cart' element={
+        <RequireAuth>
+          <Cart></Cart>
+        </RequireAuth>}></Route>
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>
