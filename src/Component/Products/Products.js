@@ -10,7 +10,7 @@ const Products = () => {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
 
-    //loading products by the value of size and page
+    //loading products by the value of size and page and category
     useEffect(() => {
         fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`)
             .then(response => response.json())
@@ -31,7 +31,7 @@ const Products = () => {
         <div>
 
             {/* Searchbar */}
-            <div>
+            <div className='mt-3'>
                 <form>
                     <input type="text" placeholder="search by name" onChange={(e) => setsearchProductName(e.target.value)} className="input input-bordered w-full max-w-lg mb-5" />
                 </form>
@@ -39,7 +39,7 @@ const Products = () => {
 
             {/* Loadproducts  by category*/}
             <div className='flex flex-row'>
-                <div className="navbar bg-base-100 basis-1/4 shadow-md bg-slate-200 mr-3 justify-center h-3/4">
+                <div className="navbar bg-base-200 basis-1/4 shadow-md bg-slate-200 mr-3 justify-center h-3/4">
                     <div className="flex-none">
                         <ul className="menu menu-vertical p-5">
                             <li onClick={() => setCategory("car_door")}><a>Car Parts</a></li>
@@ -51,7 +51,7 @@ const Products = () => {
                 </div>
 
                 {/* Pagination */}
-                <div className='mx-10 grid grid-cols-3 gap-3'>
+                <div className='mx-10 grid md:grid-cols-3 sm: grid-cols-1 gap-3'>
                     {
                         allProducts.filter((item) => {
                             return searchProductName.toLowerCase() === "" ? item : item.name.toLowerCase().includes(searchProductName)
@@ -70,7 +70,7 @@ const Products = () => {
                 <div className="btn-group">
                     {
                         [...Array(pageCount).keys()].map(number => <button
-                            className={page === number ? 'btn-active' : ''}
+                            className={page === number ? 'btn-active' : '' }
                             onClick={() => setPage(number)}
                         >{number + 1}</button>)
                     }

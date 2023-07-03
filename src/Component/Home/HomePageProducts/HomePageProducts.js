@@ -30,9 +30,9 @@ const HomePageProducts = () => {
 
     return (
         <div className=' bg-slate-100'>
-            <p className='ms-5 float-left'>Products</p>
-            <div className='container mx-auto '>
 
+            <div className='container mx-auto'>
+                <p className='font-black font-extrabold	'>Products</p>
                 <Swiper
                     modules={[Navigation, Mousewheel]}
                     navigation={true}

@@ -6,7 +6,7 @@ import Brands from './Brands/Brands';
 
 const Home = () => {
     return (
-        <div>
+        <div className='bg-slate-100'>
             <Banner></Banner>
             <HomePageProducts></HomePageProducts>
             <BusinessInfo></BusinessInfo>

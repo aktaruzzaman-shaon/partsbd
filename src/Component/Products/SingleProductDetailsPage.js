@@ -29,7 +29,7 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
     }
 
     return (
-        <div>
+        <div className='h-screen flex items-center justify-center'>
             <div className='flex flex-row'>
                 <div className='basis-1/2 justify-center'>
                     <img className='h-48 w-full object-contain' src={img}></img>
@@ -57,12 +57,10 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
                     </div>
                 </div>
 
-            </div>
+                </div>
             <div>
-
-            </div>
-
         </div>
+    </div>
     );
 };
 

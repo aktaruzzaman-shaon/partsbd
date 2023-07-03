@@ -14,7 +14,7 @@ const Brands = () => {
         .then(data => setBrandImageUrls(data))
 
     return (
-        <div className='mx-10 m-5'>
+        <div className='container mx-auto pb-20'>
             <p>Brands</p>
             <Swiper
                 modules={[Navigation]}
@@ -22,6 +22,24 @@ const Brands = () => {
                 spaceBetween={50}
                 slidesPerView={3}
                 mousewheel={true}
+                breakpoints={{
+                    "@0.00": {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    "@0.75": {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    "@1.00": {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                    "@1.50": {
+                        slidesPerView: 3,
+                        spaceBetween: 50,
+                    },
+                }}
             >
                 {
                     brandImageUrls.map((brandImageUrl) => <SwiperSlide><Brand brandImageUrl={brandImageUrl}></Brand></SwiperSlide>)

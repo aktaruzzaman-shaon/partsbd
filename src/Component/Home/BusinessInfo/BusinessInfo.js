@@ -2,10 +2,10 @@ import React from 'react';
 
 const BusinessInfo = () => {
     return (
-        <div className="hero  bg-base-200 bg-orange-700 m-5 border-rounded">
+        <div className="hero m-5 border-rounded">
             <div className="hero-content flex-col lg:flex-row-reverse ">
                 <div className="card mr-3 lg:card-side bg-base-100 shadow-xl">
-                    <div className="card-body bg-orange-400	rounded-2xl">
+                    <div className="card-body bg-orange-100	rounded-2xl">
                         <h2 className="card-title">New album is released!</h2>
                         <p>Click the button to listen on Spotiwhy app. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora hic possimus eos minus officiis quisquam quae voluptate exercitationem error illo!</p>
                         
