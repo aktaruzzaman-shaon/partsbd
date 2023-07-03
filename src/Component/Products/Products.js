@@ -39,7 +39,7 @@ const Products = () => {
 
             {/* Loadproducts  by category*/}
             <div className='flex flex-row'>
-                <div className="navbar bg-base-100 basis-1/4 bg-slate-200 mr-3 justify-center h-3/4">
+                <div className="navbar bg-base-100 basis-1/4 shadow-md bg-slate-200 mr-3 justify-center h-3/4">
                     <div className="flex-none">
                         <ul className="menu menu-vertical p-5">
                             <li onClick={() => setCategory("car_door")}><a>Car Parts</a></li>

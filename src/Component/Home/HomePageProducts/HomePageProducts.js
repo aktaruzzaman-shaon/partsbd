@@ -29,14 +29,34 @@ const HomePageProducts = () => {
 
 
     return (
-        <div>
-            <div className='mx-10'>
+        <div className=' bg-slate-100'>
+            <p className='ms-5 float-left'>Products</p>
+            <div className='container mx-auto '>
+
                 <Swiper
                     modules={[Navigation, Mousewheel]}
                     navigation={true}
                     spaceBetween={50}
                     slidesPerView={3}
                     mousewheel={true}
+                    breakpoints={{
+                        "@0.00": {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
+                        "@0.75": {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        "@1.00": {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        },
+                        "@1.50": {
+                            slidesPerView: 3,
+                            spaceBetween: 50,
+                        },
+                    }}
                 >
                     {homePageProducts.map((singleProduct) => <SwiperSlide><Product singleProduct={singleProduct}></Product></SwiperSlide>)}
                 </Swiper>
