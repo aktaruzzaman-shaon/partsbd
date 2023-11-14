@@ -26,21 +26,16 @@ const Navbar = () => {
         <li><Link to="signup">SingUp</Link></li>
         <li>
             {
-                user && <h2 className='font-bold'>{user?.displayName} </h2>
-            }
-        </li>
-        <li>
-            {
-                user ? <button className="btn bg-orange-300	border-none rounded-md hover:bg-gray-400" onClick={handleSingOut}>SignOut</button> : <li><Link to="login">Login</Link></li>
+                user ? <button className="btn bg-orange-300	border-none rounded-md hover:bg-gray-400" onClick={handleSingOut}>SignOut</button> : <Link className='btn bg-orange-300 border-none hover:bg-gray-400 rounded-md' to="login">Login</Link>
             }
         </li>
     </>
 
     return (
-        <div className='bg-slate-200 '>
-            <div className='container mx-auto h-24 	'>
-                <div className="navbar flex justify-between ">
-                    <div className="navbar-start mt-4 ">
+        <div className='bg-slate-200 flex items-center justify-center'>
+            <div className='container mx-auto h-24 '>
+                <div className="navbar flex justify-between pt-5">
+                    <div className="navbar-start  ">
                         <div className="dropdown">
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -49,12 +44,15 @@ const Navbar = () => {
                                 {menuItems}
                             </ul>
                         </div>
-                        <Link to="/" className="btn btn-ghost normal-case text-xl ">PartsBd</Link>
+                        <Link to="/" className="text-2xl ">PartsBd</Link>
                     </div>
-                    <div className="navbar-center hidden lg:flex mt-4">
-                        <ul className="menu menu-horizontal p-0">
+                    <div className="navbar-center hidden lg:flex">
+                        <ul className="menu menu-horizontal ">
                             {menuItems}
                         </ul>
+                        {
+                            user && <p className='font-bold  pl-1'>{user?.displayName} </p>
+                        }
                     </div>
                 </div>
             </div>

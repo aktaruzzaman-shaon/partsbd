@@ -6,21 +6,23 @@ import { Pagination } from 'swiper';
 
 const Banner = () => {
     return (
-        <Swiper
-            modules={[Pagination]}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            className='rounded-lg'
-            style={{
-                "--swiper-pagination-color": "#FFBA08",
-                "--swiper-pagination-bullet-size": "14px",
-                "--swiper-pagination-bullet-inactive-opacity": "1",
-                "--swiper-pagination-bullet-inactive-color": "#999999"
-            }}
-        >
-            <SwiperSlide><img src={banner1}  alt="" /></SwiperSlide>
-            <SwiperSlide><img src={banner2} alt=""  /></SwiperSlide>
-        </Swiper>
+        <div className=' '>
+            <Swiper
+                modules={[Pagination]}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                className='rounded-lg'
+                style={{
+                    "--swiper-pagination-color": "#FFBA08",
+                    "--swiper-pagination-bullet-size": "14px",
+                    "--swiper-pagination-bullet-inactive-opacity": "1",
+                    "--swiper-pagination-bullet-inactive-color": "#999999"
+                }}
+            >
+                <SwiperSlide><img src={banner1} alt="" /></SwiperSlide>
+                <SwiperSlide><img src={banner2} alt="" /></SwiperSlide>
+            </Swiper>
+        </div>
     );
 };
 

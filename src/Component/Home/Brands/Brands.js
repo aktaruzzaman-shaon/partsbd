@@ -15,7 +15,7 @@ const Brands = () => {
 
     return (
         <div className='container mx-auto pb-20'>
-            <p>Brands</p>
+            <p className='font-black font-bold text-4xl mb-5'>Brands</p>
             <Swiper
                 modules={[Navigation]}
                 navigation={true}

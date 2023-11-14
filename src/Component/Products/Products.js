@@ -70,7 +70,7 @@ const Products = () => {
                 <div className="btn-group">
                     {
                         [...Array(pageCount).keys()].map(number => <button
-                            className={page === number ? 'btn-active' : '' }
+                            className={page === number ? 'btn-active' : ''}
                             onClick={() => setPage(number)}
                         >{number + 1}</button>)
                     }
