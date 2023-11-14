@@ -4,8 +4,10 @@ import auth from '../../firebase.init';
 import { Navigate, useLocation } from 'react-router-dom';
 
 const RequireAuth = ({ children }) => {
+
     const [user, loading] = useAuthState(auth);
     const location = useLocation();
+    
     if (loading) {
         return <div>
             <div class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">

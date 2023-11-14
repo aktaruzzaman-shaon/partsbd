@@ -12,6 +12,9 @@ const Navbar = () => {
         signOut();
         localStorage.removeItem('accessToken');
     }
+    if (loading) {
+        return <p>Loading ...</p>
+    }
 
     const menuItems = <>
         <li><Link to="/">Home</Link></li>

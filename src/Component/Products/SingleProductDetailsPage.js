@@ -30,35 +30,36 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
 
     return (
         <div className='h-screen bg-zinc-300 flex items-center' >
-            
-                <div className=' basis-1/2'>
-                    <img className='h-56 w-full object-contain' src={img}></img>
+            <div className=' basis-1/2 ml-5'>
+                <img className='h-96 w-full object-contain' src={img}></img>
+            </div>
+            <div className='ml-5'>
+                <div className='mb-10'>
+                    <p className='font-bold text-4xl'>{name} </p>
+                    <p className='font-bold text-2xl'>{price} &#36;</p>
                 </div>
-                <div className=''>
-                    <p className='font-extrabold'>{name}</p>
-                    <p className='font-extrabold'>{price}</p>
 
-                    <div className=' mr-5'>
-                        <div className='mr-5'><p>Quantity : </p></div>
-                        <div>
-                            <button onClick={decreaeProductQuantity} className='btn btn-xs mr-5'>-</button>
-                            {productQuantity}
-                            <button onClick={increseProductQuantity} className='btn btn-xs ml-5'> +</button>
-                        </div>
-                    </div>
-
+                <div className='flex mr-5'>
+                    <div className='mr-5'><p>Quantity : </p></div>
                     <div>
-                        <h2 className="card-title mt-5">Amount to pay : {amount}</h2>
-                    </div>
-
-                    <div className=' mt-5'>
-                        <button className='btn mr-5'>Add to Cart</button>
-                        <button onClick={handlePaymentPageForward} className='btn'>Buy Now</button>
+                        <button onClick={decreaeProductQuantity} className='btn btn-xs mr-5'>-</button>
+                        {productQuantity}
+                        <button onClick={increseProductQuantity} className='btn btn-xs ml-5'> +</button>
                     </div>
                 </div>
+
+                <div>
+                    <h2 className="card-title mt-5">Amount to pay : {amount}</h2>
+                </div>
+
+                <div className='flex mt-5'>
+                    <button className='btn mr-5'>Add to Cart</button>
+                    <button onClick={handlePaymentPageForward} className='btn'>Buy Now</button>
+                </div>
+            </div>
 
         </div>
-        
+
     );
 };
 
