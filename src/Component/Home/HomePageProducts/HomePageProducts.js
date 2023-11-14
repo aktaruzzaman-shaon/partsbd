@@ -8,11 +8,8 @@ import 'swiper/css/bundle';
 import { useNavigate } from 'react-router-dom';
 
 const HomePageProducts = () => {
-
-
     const [homePageProducts, sethomePageProducts] = useState([]);
     const navigate = useNavigate();
-
 
     //loading products by the value of size and page
     useEffect(() => {
@@ -27,12 +24,11 @@ const HomePageProducts = () => {
         navigate('/products')
     }
 
-
     return (
         <div className=' bg-slate-100'>
 
-            <div className='container mx-auto'>
-                <p className='font-black font-extrabold	'>Products</p>
+            <div className='container mx-auto my-5'>
+                <p className='font-black font-bold text-4xl'>Products</p>
                 <Swiper
                     modules={[Navigation, Mousewheel]}
                     navigation={true}
@@ -62,7 +58,7 @@ const HomePageProducts = () => {
                 </Swiper>
             </div>
 
-            <div className='my-3'><button className='btn' onClick={handleSeeAllProducts}>See all ...</button></div>
+            <div className='my-3'><button className='btn bg-orange-300 text-black hover:bg-gray-400 border-none' onClick={handleSeeAllProducts}>See all ...</button></div>
 
         </div>
     );

@@ -28,7 +28,7 @@ const Navbar = () => {
         </li>
         <li>
             {
-                user ? <button className="btn bg-orange-300	border-none rounded-md " onClick={handleSingOut}>SignOut</button> : <li><Link to="login">Login</Link></li>
+                user ? <button className="btn bg-orange-300	border-none rounded-md hover:bg-gray-400" onClick={handleSingOut}>SignOut</button> : <li><Link to="login">Login</Link></li>
             }
         </li>
     </>
@@ -46,9 +46,9 @@ const Navbar = () => {
                                 {menuItems}
                             </ul>
                         </div>
-                        <Link to="/" className="btn btn-ghost normal-case text-xl">PartsBd</Link>
+                        <Link to="/" className="btn btn-ghost normal-case text-xl ">PartsBd</Link>
                     </div>
-                    <div className="navbar-center hidden lg:flex">
+                    <div className="navbar-center hidden lg:flex mt-4">
                         <ul className="menu menu-horizontal p-0">
                             {menuItems}
                         </ul>

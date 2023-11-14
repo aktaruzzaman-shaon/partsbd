@@ -29,16 +29,16 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
     }
 
     return (
-        <div className='h-screen flex items-center justify-center'>
-            <div className='flex flex-row'>
-                <div className='basis-1/2 justify-center'>
-                    <img className='h-48 w-full object-contain' src={img}></img>
+        <div className='h-screen bg-zinc-300 flex items-center' >
+            
+                <div className=' basis-1/2'>
+                    <img className='h-56 w-full object-contain' src={img}></img>
                 </div>
-                <div className='justify-center'>
+                <div className=''>
                     <p className='font-extrabold'>{name}</p>
                     <p className='font-extrabold'>{price}</p>
 
-                    <div className='flex justify-center mr-5'>
+                    <div className=' mr-5'>
                         <div className='mr-5'><p>Quantity : </p></div>
                         <div>
                             <button onClick={decreaeProductQuantity} className='btn btn-xs mr-5'>-</button>
@@ -57,10 +57,8 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
                     </div>
                 </div>
 
-                </div>
-            <div>
         </div>
-    </div>
+        
     );
 };
 
