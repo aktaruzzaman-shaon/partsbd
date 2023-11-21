@@ -14,17 +14,16 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
     const [amount] = AmountCalculation(productQuantity, price);
     const finalAmountToPay = { finalPriceToPay: amount }
 
-    //get cart items from local storage
-    const getCartItemArray = JSON.parse(localStorage.getItem(cartItem))
-
-
-
     //cart item save to localstorage
-    const cartItemArray = [];
+
     const handleCartItem = () => {
-        cartItemArray.push(location.state.singleProduct)
-        const stringfyCartArray = JSON.stringify(cartItemArray);
-        localStorage.setItem("cartItem", stringfyCartArray);
+        let getCartItem = JSON.parse(localStorage.getItem("cartItem"));
+        if (getCartItem == null) getCartItem = [];
+      
+        let addedClickedItem = [...getCartItem, location.state.singleProduct];
+        let stringifyCartItems = JSON.stringify(addedClickedItem);
+
+        localStorage.setItem("cartItem", stringifyCartItems);
     }
 
     const decreaeProductQuantity = () => {
