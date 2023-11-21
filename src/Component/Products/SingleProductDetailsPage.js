@@ -6,11 +6,26 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
     const location = useLocation();
     const navigate = useNavigate();
 
+
     const { img, name, price } = location.state.singleProduct;
+
 
     const [productQuantity, setproductQuantity] = useState(1);
     const [amount] = AmountCalculation(productQuantity, price);
     const finalAmountToPay = { finalPriceToPay: amount }
+
+    //get cart items from local storage
+    const getCartItemArray = JSON.parse(localStorage.getItem(cartItem))
+
+
+
+    //cart item save to localstorage
+    const cartItemArray = [];
+    const handleCartItem = () => {
+        cartItemArray.push(location.state.singleProduct)
+        const stringfyCartArray = JSON.stringify(cartItemArray);
+        localStorage.setItem("cartItem", stringfyCartArray);
+    }
 
     const decreaeProductQuantity = () => {
         if (productQuantity > 1) {
@@ -53,7 +68,7 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
                 </div>
 
                 <div className='flex mt-5'>
-                    <button className='btn mr-5'>Add to Cart</button>
+                    <button className='btn mr-5' onClick={handleCartItem}>Add to Cart</button>
                     <button onClick={handlePaymentPageForward} className='btn'>Buy Now</button>
                 </div>
             </div>

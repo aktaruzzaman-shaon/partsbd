@@ -8,8 +8,10 @@ import 'swiper/css/bundle';
 import { useNavigate } from 'react-router-dom';
 
 const HomePageProducts = () => {
+    
     const [homePageProducts, sethomePageProducts] = useState([]);
     const navigate = useNavigate();
+
 
     //loading products by the value of size and page
     useEffect(() => {
@@ -24,6 +26,7 @@ const HomePageProducts = () => {
         navigate('/products')
     }
 
+    
     return (
         <div className=' bg-slate-100'>
 
