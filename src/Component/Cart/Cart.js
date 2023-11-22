@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const Cart = () => {
-
-    const [cartItems, setCartItems] = useState([])
-
-
-    //load cart items from localstorage
-    useEffect(() => {
-        const cartItems = localStorage.getItem("cartItem");
-        const processedCartItems = JSON.parse(cartItems);
-        console.log(processedCartItems.length);
-    }, [])
+const Cart = ({ singleCartItem, handleDeleteCartItem }) => {
+    const { _id, name, price, stock, img } = singleCartItem;
 
     return (
-        <div>
-            This is cart
+        <div className="card border max-w-md card-side border-sky-500  bg-base-100 mx-auto shadow-xl  mb-2">
+            <figure className='pl-5'><img src={img} alt={name} /></figure>
+            <div className="card-body">
+                <p className="card-title ml-12">{name}</p>
+                <p>Price : {price}</p>
+                <p>Quantity : {stock}</p>
+                <div>
+                    <button className="btn btn-primary" onClick={() => handleDeleteCartItem(_id)}>Cancel</button>
+                </div>
+            </div>
         </div>
     );
 };

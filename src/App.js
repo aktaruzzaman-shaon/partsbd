@@ -21,10 +21,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import AddBrand from './Component/Dashborad/AddBrand/AddBrand';
 import SingleProductDetailsPage from './Component/Products/SingleProductDetailsPage';
-import Cart from './Component/Cart/Cart';
-
-
-
+import Carts from './Component/Cart/Carts';
 
 
 function App() {
@@ -73,7 +70,7 @@ function App() {
         <Route path='order' element={<Order></Order>}></Route>
         <Route path='cart' element={
         <RequireAuth>
-          <Cart></Cart>
+          <Carts></Carts>
         </RequireAuth>}></Route>
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
