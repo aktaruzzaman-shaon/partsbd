@@ -11,6 +11,7 @@ const Navbar = () => {
     const handleSingOut = () => {
         signOut();
         localStorage.removeItem('accessToken');
+        localStorage.removeItem('cartItem');
     }
     if (loading) {
         return <p>Loading ...</p>

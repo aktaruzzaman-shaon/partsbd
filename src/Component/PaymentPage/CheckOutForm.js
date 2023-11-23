@@ -2,7 +2,7 @@ import { CardElement, PaymentElement, useElements, useStripe } from '@stripe/rea
 import React, { useEffect, useState } from 'react';
 import { useFetcher } from 'react-router-dom';
 
-const CheckOutForm = ({ price }) => {
+const CheckOutForm = ({ price, singleProduct }) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -14,17 +14,29 @@ const CheckOutForm = ({ price }) => {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                
             },
             body: JSON.stringify({
-                price: price})
+                price: price
+            })
         })
             .then(res => res.json())
             .then(data => {
                 if (data?.clientSecret) {
                     setClientSecret(data.clientSecret)
+
+                    //make order for successfull payment
+                    fetch('http://localhost:5000/makeOrder', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify(
+                            singleProduct
+                        )
+                    })
+                        .then(res => res.json())
+                        .then(data => console.log(data, 'Successfully placed order'))
                 }
-                console.log(data)
             })
     }, [price])
 
@@ -67,6 +79,7 @@ const CheckOutForm = ({ price }) => {
                                         color: '#9e2146',
                                     },
                                 },
+
                             }}
                         />
                         <button className='btn btn-success mt-5' type="submit" disabled={!stripe || !clientSecret}>

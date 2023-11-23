@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AmountCalculation from '../OrderPage/AmountCalculation';
 
-const SingleProductDetailsPage = ({ singleProduct }) => {
+const SingleProductDetailsPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-
-    const { img, name, price } = location.state.singleProduct;
+    const singleProduct = location.state.singleProduct
+    const { img, name, price } = singleProduct;
 
 
     const [productQuantity, setproductQuantity] = useState(1);
@@ -39,11 +39,11 @@ const SingleProductDetailsPage = ({ singleProduct }) => {
 
 
     const handlePaymentPageForward = () => {
-        navigate('/payment', { state: { finalAmountToPay } })
+        navigate('/payment', { state: { finalAmountToPay ,singleProduct} })
     }
 
     return (
-        <div className='h-screen bg-zinc-300 flex items-center' >
+        <div className='h-scree bg-zinc-300 flex items-center' >
             <div className=' basis-1/2 ml-5'>
                 <img className='h-96 w-full object-contain' src={img}></img>
             </div>

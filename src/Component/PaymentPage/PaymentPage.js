@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51MlPmmJ0Iao4xBhnUD2NuduyQGwSllQ9Gvo0O
 const PaymentPage = () => {
 
     const location = useLocation();
-    const { finalPriceToPay } = location.state.finalAmountToPay;
+    const { finalPriceToPay, singleProduct } = location.state.finalAmountToPay;
 
     const options = {
         mode: 'payment',
@@ -27,7 +27,7 @@ const PaymentPage = () => {
             <div className='mt-5'>
                 <p className='text-2xl text-black mb-3 font-bold'>Amount to pay : {finalPriceToPay}</p>
                 <Elements stripe={stripePromise} options={options} >
-                    <CheckOutForm price={finalPriceToPay} />
+                    <CheckOutForm price={finalPriceToPay} singleProduct={singleProduct} />
                 </Elements>
             </div>
         </div>
