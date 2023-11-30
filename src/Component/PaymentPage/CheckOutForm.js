@@ -23,19 +23,6 @@ const CheckOutForm = ({ price, singleProduct }) => {
             .then(data => {
                 if (data?.clientSecret) {
                     setClientSecret(data.clientSecret)
-
-                    //make order for successfull payment
-                    fetch('http://localhost:5000/makeOrder', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                        body: JSON.stringify(
-                            singleProduct
-                        )
-                    })
-                        .then(res => res.json())
-                        .then(data => console.log(data, 'Successfully placed order'))
                 }
             })
     }, [price])
@@ -55,6 +42,21 @@ const CheckOutForm = ({ price, singleProduct }) => {
             type: "card",
             card
         });
+
+        // 4242424242424242
+        //make order for successfull payment
+        fetch('http://localhost:5000/makeOrder', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(
+                singleProduct
+            )
+        })
+            .then(res => res.json())
+            .then(data => console.log(data, 'Successfully placed order'))
+
         setCardError(error?.message || '')
     }
 
