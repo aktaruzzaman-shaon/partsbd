@@ -5,17 +5,10 @@ const Products = () => {
 
     const [allProducts, setallProducts] = useState([]);
     const [searchProductName, setsearchProductName] = useState("");
-    const [category, setCategory] = useState();
+    const [category, setCategory] = useState('');
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
-
-    //loading products by the value of size and page and category
-    useEffect(() => {
-        fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`)
-            .then(response => response.json())
-            .then(data => setallProducts(data));
-    }, [page, size, category])
 
     useEffect(() => {
         fetch('http://localhost:5000/productCount')
@@ -27,16 +20,21 @@ const Products = () => {
             });
     }, [])
 
-    //handle categorytical search
-    const categorySearchHandler = (categoryName) => {
-        // let newArrayProducts = [...allProducts]
-        // let filteredCategory = newArrayProducts.filter((item) => {
-        //     return item.name.toLowerCase().includes(categoryName.toLowerCase())
-        // })
-        // setallProducts(filteredCategory)
-        setCategory(categoryName)
+    
+    //loading products by the value of size and page and category
+    useEffect(() => {
+        fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`)
+            .then(response => response.json())
+            .then(data => setallProducts(data));
+    }, [page, size, category])
 
+
+
+    // handle categorytical search
+    const categorySearchHandler = (categoryName) => {
+        setCategory(categoryName)
     }
+    console.log(allProducts)
 
     return (
         <div>
@@ -53,7 +51,8 @@ const Products = () => {
                 <div className="navbar bg-base-200 basis-1/4 shadow-md bg-slate-300 mr-3 justify-center h-3/4">
                     <div className="flex-none">
                         <ul className="menu menu-vertical p-5">
-                            <li onClick={() => categorySearchHandler("car")} ><a>Car Parts</a></li>
+                            <li onClick={() => categorySearchHandler("allproducts")}><a>All products</a></li>
+                            <li onClick={() => categorySearchHandler("car_tools")} ><a>Car Parts</a></li>
                             <li onClick={() => setsearchProductName("car_tools")}><a>Tools And hardware</a></li>
                             <li onClick={() => setsearchProductName("car_seat")}><a>Hybrid car seat</a></li>
                             <li onClick={() => setsearchProductName("car_glass")}><a>Heavy veichele glass</a></li>
