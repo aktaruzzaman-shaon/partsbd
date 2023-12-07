@@ -28,8 +28,10 @@ function App() {
 
   return (
     <div className="App">
+
       <Navbar></Navbar>
       <Routes>
+
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='products' element={<Products></Products>}></Route>
@@ -69,9 +71,9 @@ function App() {
 
         <Route path='order' element={<Order></Order>}></Route>
         <Route path='cart' element={
-        <RequireAuth>
-          <Carts></Carts>
-        </RequireAuth>}></Route>
+          <RequireAuth>
+            <Carts></Carts>
+          </RequireAuth>}></Route>
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>

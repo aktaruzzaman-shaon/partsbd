@@ -6,11 +6,13 @@ import Brands from './Brands/Brands';
 
 const Home = () => {
     return (
-        <div className='bg-slate-100'>
+        <div className='bg-slate-100 p-5'>
+       
             <Banner></Banner>
             <HomePageProducts></HomePageProducts>
             <BusinessInfo></BusinessInfo>
             <Brands></Brands>
+       
         </div>
     );
 };
