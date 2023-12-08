@@ -6,12 +6,12 @@ import { Pagination } from 'swiper';
 
 const Banner = () => {
     return (
-        <div className=' '>
+        <div>
             <Swiper
                 modules={[Pagination]}
                 slidesPerView={1}
                 pagination={{ clickable: true }}
-                className='rounded-lg'
+                className='rounded-lg md:h-[450px]'
                 style={{
                     "--swiper-pagination-color": "#FFBA08",
                     "--swiper-pagination-bullet-size": "14px",
@@ -19,8 +19,8 @@ const Banner = () => {
                     "--swiper-pagination-bullet-inactive-color": "#999999"
                 }}
             >
-                <SwiperSlide><img src={banner1} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={banner2} alt="" /></SwiperSlide>
+                <SwiperSlide ><img src={banner1} alt="" /></SwiperSlide>
+                <SwiperSlide ><img src={banner2} alt="" /></SwiperSlide>
             </Swiper>
         </div>
     );

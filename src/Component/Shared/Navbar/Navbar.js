@@ -13,10 +13,12 @@ const Navbar = () => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('cartItem');
     }
+
     if (loading) {
         return <p>Loading ...</p>
     }
 
+    const menuItemsArray = ["Home","Products", "Orders", "Cart", "Dashboard", "Blog", "SingUp"]
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="products">Products</Link></li>
@@ -33,7 +35,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className='bg-slate-200 flex items-center justify-center'>
+        <div className='bg-slate-200 flex items-center justify-center '>
             <div className='container mx-auto h-24 '>
                 <div className="navbar flex justify-between pt-5">
                     <div className="navbar-start ">
@@ -43,13 +45,22 @@ const Navbar = () => {
                             </label>
                             <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                 {menuItems}
+
                             </ul>
                         </div>
                         <Link to="/" className="text-2xl ">PartsBd</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
-                        <ul className="menu menu-horizontal ">
-                            {menuItems}
+                        <ul className="menu menu-horizontal">
+                            {/* {menuItems} */}
+
+                            {menuItemsArray.map((menuItem) => <li className='text-black hover:bg-gray-400 hover:text-white font-bold hover:rounded-md' ><Link to={menuItem.toLowerCase()}>{menuItem}</Link></li>)}
+
+                            <li>
+                                {
+                                    user ? <button className="btn bg-orange-300	border-none rounded-md hover:bg-gray-400" onClick={handleSingOut}>SignOut</button> : <Link className='btn bg-orange-300 border-none hover:bg-gray-400 rounded-md' to="login">Login</Link>
+                                }
+                            </li>
                         </ul>
                         {
                             user && <p className='font-bold  pl-1'>{user?.displayName} </p>
