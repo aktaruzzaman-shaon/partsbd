@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product';
+import { useQuery } from 'react-query';
 
 const Products = () => {
 
@@ -9,6 +10,8 @@ const Products = () => {
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
+
+
 
     useEffect(() => {
         fetch('http://localhost:5000/productCount')
@@ -20,12 +23,12 @@ const Products = () => {
             });
     }, [])
 
-    
     //loading products by the value of size and page and category
+    const { data, isLoading, refetch } = useQuery('allProducts', () => fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`).then(res => res.json()).then(data => setallProducts(data)))
+
+
     useEffect(() => {
-        fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`)
-            .then(response => response.json())
-            .then(data => setallProducts(data));
+        refetch()
     }, [page, size, category])
 
 
@@ -34,7 +37,11 @@ const Products = () => {
     const categorySearchHandler = (categoryName) => {
         setCategory(categoryName)
     }
-    console.log(allProducts)
+
+    // Loading state
+    if (isLoading) {
+        return <p>Loading ...</p>
+    }
 
     return (
         <div>
@@ -47,15 +54,15 @@ const Products = () => {
             </div>
 
             {/* Loadproducts  by category*/}
-            <div className='flex flex-row'>
-                <div className="navbar bg-base-200 basis-1/4 shadow-md bg-slate-300 mr-3 justify-center h-3/4">
-                    <div className="flex-none">
+            <div className='flex flex-row '>
+                <div className="navbar basis-1/4 justify-center h-52 md:w-42">
+                    <div className="flex-none border rounded-md border-green-500">
                         <ul className="menu menu-vertical p-5">
                             <li onClick={() => categorySearchHandler("allproducts")}><a>All products</a></li>
                             <li onClick={() => categorySearchHandler("car_tools")} ><a>Car Parts</a></li>
-                            <li onClick={() => setsearchProductName("car_tools")}><a>Tools And hardware</a></li>
-                            <li onClick={() => setsearchProductName("car_seat")}><a>Hybrid car seat</a></li>
-                            <li onClick={() => setsearchProductName("car_glass")}><a>Heavy veichele glass</a></li>
+                            <li onClick={() => setsearchProductName("car")}><a>Tools And hardware</a></li>
+                            {/* <li onClick={() => setsearchProductName("car_seat")}><a>Hybrid car seat</a></li>
+                            <li onClick={() => setsearchProductName("car_glass")}><a>Heavy veichele glass</a></li> */}
                         </ul>
                     </div>
                 </div>
