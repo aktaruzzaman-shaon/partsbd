@@ -31,13 +31,14 @@ const HomePageProducts = () => {
         <div className=' bg-slate-100'>
 
             <div className='container mx-auto my-5'>
-                <p className='font-black font-bold text-4xl'>Products</p>
+                <p className='text-black font-bold text-4xl'>Products</p>
+
                 <Swiper
-                    modules={[Navigation, Mousewheel]}
+                    modules={[Navigation]}
                     navigation={true}
                     spaceBetween={50}
                     slidesPerView={3}
-                    mousewheel={true}
+
                     breakpoints={{
                         "@0.00": {
                             slidesPerView: 1,
@@ -59,6 +60,7 @@ const HomePageProducts = () => {
                 >
                     {homePageProducts.map((singleProduct) => <SwiperSlide><Product singleProduct={singleProduct}></Product></SwiperSlide>)}
                 </Swiper>
+
             </div>
 
             <div className='my-3'><button className='btn bg-orange-300 text-black hover:bg-gray-400 border-none' onClick={handleSeeAllProducts}>See all ...</button></div>
