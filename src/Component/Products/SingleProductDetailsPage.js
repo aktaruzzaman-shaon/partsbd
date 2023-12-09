@@ -19,7 +19,7 @@ const SingleProductDetailsPage = () => {
     const handleCartItem = () => {
         let getCartItem = JSON.parse(localStorage.getItem("cartItem"));
         if (getCartItem == null) getCartItem = [];
-      
+
         let addedClickedItem = [...getCartItem, location.state.singleProduct];
         let stringifyCartItems = JSON.stringify(addedClickedItem);
 
@@ -39,7 +39,7 @@ const SingleProductDetailsPage = () => {
 
 
     const handlePaymentPageForward = () => {
-        navigate('/payment', { state: { finalAmountToPay ,singleProduct} })
+        navigate('/payment', { state: { finalAmountToPay, singleProduct } })
     }
 
     return (
