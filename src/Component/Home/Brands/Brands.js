@@ -14,14 +14,15 @@ const Brands = () => {
         .then(data => setBrandImageUrls(data))
 
     return (
-        <div className='container mx-auto pb-20'>
-            <p className='font-black font-bold text-4xl mb-5'>Brands</p>
+        <div className='container mx-auto pb-20 '>
+            <p className='font-black font-bold text-4xl my-20'>Brands</p>
             <Swiper
                 modules={[Navigation]}
                 navigation={true}
                 spaceBetween={50}
                 slidesPerView={3}
-                mousewheel={true}
+                mousewheel={true} 
+                className=""
                 breakpoints={{
                     "@0.00": {
                         slidesPerView: 1,

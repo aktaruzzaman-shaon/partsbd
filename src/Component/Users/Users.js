@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import User from './User';
+import Loading from '../Shared/Loading/Loading';
 
 const Users = () => {
 
@@ -8,7 +9,7 @@ const Users = () => {
     const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user/').then(res => res.json()));
 
     if (isLoading) {
-        return <p>Loading ....</p>
+        return <Loading></Loading>
     }
 
     return (

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product';
 import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading/Loading';
+import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
 
@@ -38,7 +40,7 @@ const Products = () => {
 
     // Loading state
     if (isLoading) {
-        return <span className="loading loading-bars loading-lg"></span>
+        return <Loading></Loading>
     }
 
     return (
@@ -98,6 +100,8 @@ const Products = () => {
 
                 </div>
             </div>
+
+            
         </div >
     );
 };

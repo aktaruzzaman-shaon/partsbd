@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import ManageProduct from './ManageProduct';
+import Loading from '../Shared/Loading/Loading';
 
 const ManageProducts = () => {
 
@@ -10,7 +11,7 @@ const ManageProducts = () => {
     const { data, isLoading, refetch } = useQuery('manageProducts', () => fetch('http://localhost:5000/allProducts').then(res => res.json()).then(data => setallProducts(data)))
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Loading></Loading>
     }
 
     return (

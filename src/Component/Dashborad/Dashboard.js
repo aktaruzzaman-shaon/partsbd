@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { set } from 'react-hook-form';
+import Loading from '../Shared/Loading/Loading';
 
 const Dashboard = () => {
     // load logged in user info
@@ -23,7 +24,7 @@ const Dashboard = () => {
     }, [])
 
     if (loading) {
-        return <span className="loading loading-bars loading-lg"></span>
+        return <Loading></Loading>
     }
 
 

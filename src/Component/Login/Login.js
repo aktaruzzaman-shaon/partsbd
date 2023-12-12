@@ -5,6 +5,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import useToken from '../Hooks/useToken';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../Shared/Loading/Loading';
 
 
 
@@ -37,7 +38,7 @@ const Login = () => {
     };
 
     if (loading || gloading) {
-        return <p>Loading ....</p>
+        return <Loading></Loading>
     }
 
     const from = location.state?.from?.pathname || '/';
@@ -46,7 +47,8 @@ const Login = () => {
     }
 
     return (
-        <div className="card  mt-20 mx-auto w-96 bg-base-100 shadow-xl mb-12">
+        <div className="h-screen">
+            <div className="card  mt-20 mx-auto w-96 bg-base-100 shadow-xl mb-12">
             <div className="card-body">
                 <h2 className="card-title justify-center">Login</h2>
                 <form name='loginForm' onSubmit={handleSubmit(handleLogin)}>
@@ -67,14 +69,16 @@ const Login = () => {
                     />
                     {errors.password && <p role="alert">{errors.password?.message}</p>}
 
-                    <input type="submit" value="login" className="btn w-full mt-5" />
+                    <input type="submit" value="login" className="btn w-full mt-5 bg-orange-300 text-black" />
 
                 </form>
                 <div className="divider">OR</div>
 
-                <input onClick={() => signInWithGoogle()} type="submit" value="Continune with Google" className="btn w-full mt-5" />
+                <input onClick={() => signInWithGoogle()} type="submit" value="Continune with Google" className="btn w-full mt-5 bg-orange-300  text-black" />
             </div>
         </div>
+        </div>
+
     );
 };
 

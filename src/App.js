@@ -22,6 +22,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import AddBrand from './Component/Dashborad/AddBrand/AddBrand';
 import SingleProductDetailsPage from './Component/Products/SingleProductDetailsPage';
 import Carts from './Component/Cart/Carts';
+import Loading from './Component/Shared/Loading/Loading';
 
 
 function App() {

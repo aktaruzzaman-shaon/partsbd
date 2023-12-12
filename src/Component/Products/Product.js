@@ -41,7 +41,7 @@ const Product = ({ singleProduct, adminUser, refetch }) => {
                 <div><img className=' object-cover h-48 w-96' src={img}></img></div>
                 <h2 className="card-title">{name}</h2>
                 <p>Price: {price}</p>
-                <button className='btn btn-primary' onClick={handleSingleProductViewer}>Details</button>
+                <button className='btn border-none text-black bg-orange-300 hover:bg-orange-500' onClick={handleSingleProductViewer}>Details</button>
             </div>
         </div>
     );
