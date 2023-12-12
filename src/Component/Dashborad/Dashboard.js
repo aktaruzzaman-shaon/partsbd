@@ -23,7 +23,7 @@ const Dashboard = () => {
     }, [])
 
     if (loading) {
-        return <p>Loading ...</p>
+        return <span className="loading loading-bars loading-lg"></span>
     }
 
 

@@ -18,7 +18,7 @@ const Carts = () => {
     }
 
     return (
-        <div className='my-5 h-screen'>
+        <div className='my-5'>
             {
                 cartItems?.map(singleCartItem => <Cart singleCartItem={singleCartItem} handleDeleteCartItem={handleDeleteCartItem}></Cart>)
             }

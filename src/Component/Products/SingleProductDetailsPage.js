@@ -45,7 +45,7 @@ const SingleProductDetailsPage = () => {
     return (
         <div className='h-screen bg-zinc-300 flex items-center' >
             <div className=' basis-1/2 ml-5'>
-                <img className='h-96 w-full object-contain' src={img}></img>
+                <img className=' w-full object-contain h-96' src={img}></img>
             </div>
             <div className='ml-5'>
                 <div className='mb-10'>

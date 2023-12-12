@@ -18,14 +18,14 @@ const Navbar = () => {
         return <p>Loading ...</p>
     }
 
-    const menuItemsArray = ["Home","Products", "Orders", "Cart", "Dashboard", "Blog", "SingUp"]
+    const menuItemsArray = ["Home","Products", "Cart", "Dashboard","signup"]
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="products">Products</Link></li>
-        <li><Link to="order">Orders</Link></li>
+        {/* <li><Link to="order">Orders</Link></li> */}
         <li><Link to="cart">Cart</Link></li>
         <li><Link to="dashboard">Dashboard</Link></li>
-        <li><Link to="blog">Blog</Link></li>
+        {/* <li><Link to="blog">Blog</Link></li> */}
         <li><Link to="signup">SingUp</Link></li>
         <li>
             {
@@ -45,7 +45,6 @@ const Navbar = () => {
                             </label>
                             <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                 {menuItems}
-
                             </ul>
                         </div>
                         <Link to="/" className="text-2xl ">PartsBd</Link>

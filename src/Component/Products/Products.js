@@ -11,8 +11,6 @@ const Products = () => {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
 
-
-
     useEffect(() => {
         fetch('http://localhost:5000/productCount')
             .then(response => response.json())
@@ -40,7 +38,7 @@ const Products = () => {
 
     // Loading state
     if (isLoading) {
-        return <p>Loading ...</p>
+        return <span className="loading loading-bars loading-lg"></span>
     }
 
     return (
@@ -55,7 +53,7 @@ const Products = () => {
 
             {/* Loadproducts  by category*/}
             <div className='flex flex-row '>
-                <div className="navbar basis-1/4 justify-center h-52 md:w-42">
+                <div className="navbar basis-1/4 justify-center h-52 md:w-42 mt-8">
                     <div className="flex-none border rounded-md border-green-500">
                         <ul className="menu menu-vertical p-5">
                             <li onClick={() => categorySearchHandler("allproducts")}><a>All products</a></li>
@@ -68,7 +66,7 @@ const Products = () => {
                 </div>
 
                 {/* Pagination */}
-                <div className='mx-10 grid md:grid-cols-3 sm: grid-cols-1 gap-3'>
+                <div className='mx-10 grid md:grid-cols-3 sm: grid-cols-1 gap-3 sm:w-52 md:w-auto'>
                     {
                         allProducts.filter((item) => {
                             return searchProductName.toLowerCase() === "" ? item : item.name.toLowerCase().includes(searchProductName)
@@ -82,19 +80,22 @@ const Products = () => {
 
             {/* //pagination */}
             <div className='m-5'>
-                <div className="btn-group">
+                <div className="join">
+                    
                     {
                         [...Array(pageCount).keys()].map(number => <button
-                            className={page === number ? 'btn-active' : ''}
+                            className={`join-item btn mx-1 text-black ${page === number ? "btn-active" : 'bg-gray-300'}`}
                             onClick={() => setPage(number)}
                         >{number + 1}</button>)
                     }
 
-                    <select onChange={e => setSize(e.target.value)}>
+                    
+                    <select className='select max-w-xs bg-gray-300' onChange={e => setSize(e.target.value)}>
                         <option value="5" selected >5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
                     </select>
+
                 </div>
             </div>
         </div >

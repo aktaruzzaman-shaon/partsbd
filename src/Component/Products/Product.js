@@ -38,7 +38,7 @@ const Product = ({ singleProduct, adminUser, refetch }) => {
     return (
         <div className="card w-50 bg-base-100 shadow-xl mt-10">
             <div className="card-body hover:scale-110 " onClick={handleSingleProductViewer} >
-                <div><img className='h-48 w-full object-contain' src={img}></img></div>
+                <div><img className=' object-cover h-48 w-96' src={img}></img></div>
                 <h2 className="card-title">{name}</h2>
                 <p>Price: {price}</p>
                 <button className='btn btn-primary' onClick={handleSingleProductViewer}>Details</button>

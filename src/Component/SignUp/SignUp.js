@@ -10,7 +10,7 @@ import { navigate, useNavigate } from 'react-router-dom';
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
-    
+
 
     //for create user with email and password
     const [
@@ -22,7 +22,7 @@ const SignUp = () => {
 
     const [token] = useToken(user);
 
-    
+
     if (token) {
         navigate('/home');
     }
@@ -33,7 +33,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="card  mt-20 mx-auto w-96 bg-base-100 shadow-xl">
+        <div className="card  mt-20 mx-auto w-96 bg-base-100 shadow-xl h-5/6 mb-12">
             <div className="card-body">
                 <h2 className="card-title justify-center">SignUp</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
