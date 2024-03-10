@@ -14,7 +14,7 @@ const Products = () => {
     const [size, setSize] = useState(6);
 
     useEffect(() => {
-        fetch('http://localhost:5000/productCount')
+        fetch('partsbd-server-e0y1dczy8-aktaruzzaman-shaon.vercel.app/productCount')
             .then(response => response.json())
             .then(data => {
                 const count = data.count;
@@ -83,7 +83,7 @@ const Products = () => {
             {/* //pagination */}
             <div className='m-5'>
                 <div className="join">
-                    
+
                     {
                         [...Array(pageCount).keys()].map(number => <button
                             className={`join-item btn mx-1 text-black ${page === number ? "btn-active" : 'bg-gray-300'}`}
@@ -91,17 +91,14 @@ const Products = () => {
                         >{number + 1}</button>)
                     }
 
-                    
+
                     <select className='select max-w-xs bg-gray-300' onChange={e => setSize(e.target.value)}>
                         <option value="5" selected >5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
                     </select>
-
                 </div>
             </div>
-
-            
         </div >
     );
 };
