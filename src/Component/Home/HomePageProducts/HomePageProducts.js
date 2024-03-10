@@ -15,7 +15,7 @@ const HomePageProducts = () => {
 
     //loading products by the value of size and page
     useEffect(() => {
-        fetch(`http://localhost:5000/homePageProducts`)
+        fetch(`partsbd-server.vercel.app/homePageProducts`)
             .then(response => response.json())
             .then(data => sethomePageProducts(data));
     }, [])
