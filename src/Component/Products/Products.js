@@ -14,7 +14,7 @@ const Products = () => {
     const [size, setSize] = useState(6);
 
     useEffect(() => {
-        fetch('partsbd-server-e0y1dczy8-aktaruzzaman-shaon.vercel.app/productCount')
+        fetch('https://partsbd-server-e0y1dczy8-aktaruzzaman-shaon.vercel.app/productCount')
             .then(response => response.json())
             .then(data => {
                 const count = data.count;
