@@ -21,11 +21,7 @@ const HomePageProducts = () => {
     // }, [])
 
     useEffect(() => {
-<<<<<<< HEAD
-        fetch(`https://partsbd-server.vercel.app/homePageProducts`)
-=======
-        fetch(`partsbd-server.vercel.app/homePageProducts`)
->>>>>>> 286f05b78b63ae63df2ff1c000ca71e81c5a8c7b
+        fetch(`partsbd-server.vercel.app/homePageProducts/`)
             .then(response => response.json())
             .then(data => sethomePageProducts(data));
     }, [])

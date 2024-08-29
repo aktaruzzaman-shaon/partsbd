@@ -24,7 +24,7 @@ const Products = () => {
     }, [])
 
     //loading products by the value of size and page and category
-    const { data, isLoading, refetch } = useQuery('allProducts', () => fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`).then(res => res.json()).then(data => setallProducts(data)))
+    const { data, isLoading, refetch } = useQuery('allProducts', () => fetch(`partsbd-server.vercel.app/allProducts?page=${page}&size=${size}&category=${category}`).then(res => res.json()).then(data => setallProducts(data)))
 
 
     useEffect(() => {
@@ -101,11 +101,6 @@ const Products = () => {
                     </select>
                 </div>
             </div>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 286f05b78b63ae63df2ff1c000ca71e81c5a8c7b
         </div >
     );
 };
