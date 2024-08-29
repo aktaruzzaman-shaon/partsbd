@@ -13,8 +13,10 @@ const Products = () => {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
 
+    // partsbd-server.vercel.app
+
     useEffect(() => {
-        fetch('partsbd-server.vercel.app/productCount')
+        fetch('http://localhost:3001/productCount')
             .then(response => response.json())
             .then(data => {
                 const count = data.count;
@@ -24,9 +26,9 @@ const Products = () => {
     }, [])
 
     //loading products by the value of size and page and category
-    const { data, isLoading, refetch } = useQuery('allProducts', () => fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`).then(res => res.json()).then(data => setallProducts(data)))
+    const { data, isLoading, refetch } = useQuery('allProducts', () => fetch(`http://localhost:3001/allProducts?page=${page}&size=${size}&category=${category}`).then(res => res.json()).then(data => setallProducts(data)))
 
-
+    console.log(data)
     useEffect(() => {
         refetch()
     }, [page, size, category])
