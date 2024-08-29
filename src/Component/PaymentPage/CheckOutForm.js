@@ -20,11 +20,13 @@ const CheckOutForm = ({ price, singleProduct }) => {
             })
         })
             .then(res => res.json())
-            .then(data => {
-                if (data?.clientSecret) {
-                    setClientSecret(data.clientSecret)
-                }
-            })
+            // .then(data => {
+            //     if (data?.clientSecret) {
+            //         setClientSecret(data.clientSecret)
+            //     }
+            //     console.log(data)
+            // })
+            .then(data => console.log(data))
     }, [price])
 
     const handleSubmit = async (event) => {
@@ -84,7 +86,7 @@ const CheckOutForm = ({ price, singleProduct }) => {
 
                             }}
                         />
-                        <button className='btn btn-success mt-5' type="submit" disabled={!stripe || !clientSecret}>
+                        <button className='btn btn-success mt-5' type="submit" >
                             Pay
                         </button>
                     </form>

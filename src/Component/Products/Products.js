@@ -43,6 +43,8 @@ const Products = () => {
         return <Loading></Loading>
     }
 
+    console.log(data, "data loading")
+
     return (
         <div>
 
@@ -83,7 +85,7 @@ const Products = () => {
             {/* //pagination */}
             <div className='m-5'>
                 <div className="join">
-                    
+
                     {
                         [...Array(pageCount).keys()].map(number => <button
                             className={`join-item btn mx-1 text-black ${page === number ? "btn-active" : 'bg-gray-300'}`}
@@ -91,7 +93,7 @@ const Products = () => {
                         >{number + 1}</button>)
                     }
 
-                    
+
                     <select className='select max-w-xs bg-gray-300' onChange={e => setSize(e.target.value)}>
                         <option value="5" selected >5</option>
                         <option value="10">10</option>
@@ -101,7 +103,7 @@ const Products = () => {
                 </div>
             </div>
 
-            
+
         </div >
     );
 };

@@ -14,8 +14,14 @@ const HomePageProducts = () => {
 
 
     //loading products by the value of size and page
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/homePageProducts`)
+    //         .then(response => response.json())
+    //         .then(data => sethomePageProducts(data));
+    // }, [])
+
     useEffect(() => {
-        fetch(`http://localhost:5000/homePageProducts`)
+        fetch(`https://partsbd-server.vercel.app/homePageProducts`)
             .then(response => response.json())
             .then(data => sethomePageProducts(data));
     }, [])
@@ -38,7 +44,6 @@ const HomePageProducts = () => {
                     navigation={true}
                     spaceBetween={50}
                     slidesPerView={3}
-
                     breakpoints={{
                         "@0.00": {
                             slidesPerView: 1,
@@ -57,6 +62,7 @@ const HomePageProducts = () => {
                             spaceBetween: 50,
                         },
                     }}
+
                 >
                     {homePageProducts.map((singleProduct) => <SwiperSlide><Product singleProduct={singleProduct}></Product></SwiperSlide>)}
                 </Swiper>
