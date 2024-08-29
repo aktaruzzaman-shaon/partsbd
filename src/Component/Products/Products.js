@@ -14,7 +14,7 @@ const Products = () => {
     const [size, setSize] = useState(6);
 
     useEffect(() => {
-        fetch('http://localhost:5000/productCount')
+        fetch('partsbd-server.vercel.app/productCount')
             .then(response => response.json())
             .then(data => {
                 const count = data.count;
@@ -99,11 +99,13 @@ const Products = () => {
                         <option value="10">10</option>
                         <option value="15">15</option>
                     </select>
-
                 </div>
             </div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 286f05b78b63ae63df2ff1c000ca71e81c5a8c7b
         </div >
     );
 };
