@@ -13,7 +13,7 @@ const Orders = () => {
     const mail = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?mail=${mail}`, {
+        fetch(`https://partsbd-server.vercel.app/orders?mail=${mail}`, {
             method: 'GET',
             headers: {
                 'authorization': ` Bearer ${localStorage.getItem('accessToken')}`

@@ -12,16 +12,15 @@ const HomePageProducts = () => {
     const [homePageProducts, sethomePageProducts] = useState([]);
     const navigate = useNavigate();
 
-
-    //loading products by the value of size and page
+    // loading products by the value of size and page
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/homePageProducts`)
+    //     fetch(`http://localhost:5001/homePageProducts`)
     //         .then(response => response.json())
     //         .then(data => sethomePageProducts(data));
     // }, [])
 
     useEffect(() => {
-        fetch(`partsbd-server.vercel.app/homePageProducts/`)
+        fetch(`https://partsbd-server.vercel.app/homePageProducts`)
             .then(response => response.json())
             .then(data => sethomePageProducts(data));
     }, [])

@@ -6,7 +6,7 @@ const ManageProduct = ({ singleProduct, refetch }) => {
 
     // handle prodcut remove
     const handleProductRemove = () => {
-        fetch(`http://localhost:5000/deleteProducts/${_id}`, {
+        fetch(`https://partsbd-server.vercel.app/${_id}`, {
             method: 'DELETE',
             headers: {
                 "Content-type": "application/json"

@@ -9,7 +9,7 @@ const Brands = () => {
 
     const [brandImageUrls, setBrandImageUrls] = useState([]);
 
-    fetch('http://localhost:5000/partsBrand')
+    fetch('https://partsbd-server.vercel.app/partsBrand')
         .then(res => res.json())
         .then(data => setBrandImageUrls(data))
 
