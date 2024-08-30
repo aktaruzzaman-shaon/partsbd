@@ -16,7 +16,7 @@ const Products = () => {
     // partsbd-server.vercel.app
 
     useEffect(() => {
-        fetch('http://localhost:3000/productCount')
+        fetch('https://partsbd-server.vercel.app/productCount')
             .then(response => response.json())
             .then(data => {
                 const count = data.count;
