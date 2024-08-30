@@ -26,7 +26,7 @@ const Products = () => {
     }, [])
 
     //loading products by the value of size and page and category
-    const { data, isLoading, refetch } = useQuery('allProducts', () => fetch(`http://localhost:3001/allProducts?page=${page}&size=${size}&category=${category}`).then(res => res.json()).then(data => setallProducts(data)))
+    const { data, isLoading, refetch } = useQuery('allProducts', () => fetch(`http://localhost:5000/allProducts?page=${page}&size=${size}&category=${category}`).then(res => res.json()).then(data => setallProducts(data)))
 
     console.log(data)
     useEffect(() => {
@@ -44,6 +44,8 @@ const Products = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    console.log(data, "data loading")
 
     return (
         <div>

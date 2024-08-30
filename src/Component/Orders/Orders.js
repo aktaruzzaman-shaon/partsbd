@@ -29,7 +29,7 @@ const Orders = () => {
             })
             .then(data => setorderData(data))
     }, [])
-
+    console.log('orders page')
     return (
 
         <div className="overflow-x-auto">

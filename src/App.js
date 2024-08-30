@@ -43,7 +43,7 @@ function App() {
           </RequireAuth>
         }>
           {/* nested route start for dashboard*/}
-          {/* <Route index element={<Orders></Orders>}></Route> */}
+          <Route index element={<Orders></Orders>}></Route>
           <Route path='users' element={
             <RequireAdmin>
               <Users></Users>
